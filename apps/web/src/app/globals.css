@@ -1,2 +1,10 @@
 @import "tailwindcss";
 
+@theme inline {
+  --font-sans: var(--font-manrope);
+  --font-mono: var(--font-dm-mono);
+}
+
+body {
+  font-family: var(--font-manrope), sans-serif;
+}

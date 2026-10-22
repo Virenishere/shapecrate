@@ -1,27 +1,41 @@
 import Image from "next/image";
+import Link from "next/link";
+import { Moon,Sun } from 'lucide-react';
 
-import img from "../../../public/vercel.svg"
+import icon from "../../../public/vercel.svg"
+import ghicon from "../../../public/github.svg"
+
+
 export default function Navbar(){
     return(
-        <nav className="flex justify-between border-1 border-red-400">
+        <nav className="flex justify-between py-6 -mx-44 px-44 border-b border-gray-300">
             {/* first part  */}
-            <div className="flex items-center ">
-                <Image className="dark:invert h-[14px] w-4" src={img} alt="shapecrate logomark" width={16} height={14} />
-                <span>shapecrate</span>
-            </div>
+                <Link className="flex flex-r items-center gap-2" href="/">
+                <Image className="dark:invert" src={icon} alt="shapecrate logomark" width={24} height={24} />
+                <span className="font-bold text-xl">shapecrate</span>
+                </Link>
+                
+       
             {/* second part  */}
-            <div className="">
-                <ul className="flex">   
+            
+                <ul className="flex gap-8 font-medium text-sm">   
                     <li>Components</li>
                     <li>Documentation</li>
                     <li>Open Source</li>
                 </ul>
-            </div>
+           
             
             {/* third part  */}
-            <div >
-                <button>toggle mode</button>
-                <button>github</button>
+            <div className="flex gap-2 text-sm">
+                {/* dark and light mode toggle  */}
+                <button className="border border-gray-300 p-2 rounded-md ">
+                    <Moon size={20}/>
+                    {/* <Sun /> */}
+                </button>
+
+                <button className="flex flex-row border border-gray-300 p-2 rounded-md text-center items-center">
+                    <Image src={ghicon} alt="github icon" width={20} height={20}/> <span>GitHub</span>
+                </button>
             </div> 
         </nav>
     )
