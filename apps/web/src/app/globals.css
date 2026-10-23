@@ -5,6 +5,23 @@
   --font-mono: var(--font-dm-mono);
 }
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
 body {
   font-family: var(--font-manrope), sans-serif;
+  background-color: #fbfbfa;
+  color: #111827;
+}
+
+html.dark body {
+  background-color: #111827;
+  color: #f9fafb;
 }
