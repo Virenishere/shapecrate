@@ -13,6 +13,7 @@ import { useState } from "react";
 export default function Navbar(){
     const {mode, changeMode} = useTheme();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    
 
     return(
         <nav className="flex justify-between py-6 -mx-44 px-44 border-b border-(--line)">
