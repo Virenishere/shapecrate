@@ -13,7 +13,7 @@ export default function Navbar(){
     const {mode, changeMode} = useTheme();
     
     return(
-        <nav className="flex justify-between py-6 -mx-44 px-44 border-b border-gray-300">
+        <nav className="flex justify-between py-6 -mx-44 px-44 border-b border-(--line)">
             {/* first part  */}
                 <Link className="flex flex-r items-center gap-2" href="/">
                 <Image className="dark:invert" src={icon} alt="shapecrate logomark" width={24} height={24} />
@@ -23,14 +23,14 @@ export default function Navbar(){
        
             {/* second part  */}
             
-                <ul className="flex gap-8 font-semibold text-sm">   
-                    <Link href="/components" className="  p-2 rounded-lg transition-colors hover:bg-gray-200 hover:border-gray-200 dark:border-gray-900 dark:hover:bg-gray-800 dark:hover:border-gray-700">
+                <ul className="flex gap-8 font-semibold text-sm text-(--ink-2)">
+                    <Link href="/components" className="p-2 rounded-lg transition-colors hover:bg-(--surface-2) hover:border-(--line) hover:text-(--ink)">
                     <li>Components</li>
                     </Link>
-                    <Link href="/docs" className="  p-2 rounded-lg transition-colors hover:bg-gray-200 hover:border-gray-200 dark:border-gray-900 dark:hover:bg-gray-800 dark:hover:border-gray-700">
+                    <Link href="/docs" className="p-2 rounded-lg transition-colors hover:bg-(--surface-2) hover:border-(--line) hover:text-(--ink)">
                     <li>Documentation</li>
                     </Link>
-                    <Link href="/open-source" className="  p-2 rounded-lg transition-colors hover:bg-gray-200 hover:border-gray-200 dark:border-gray-900 dark:hover:bg-gray-800 dark:hover:border-gray-700">
+                    <Link href="/open-source" className="p-2 rounded-lg transition-colors hover:bg-(--surface-2) hover:border-(--line) hover:text-(--ink)">
                     <li>Open Source</li>
                     </Link>
                 </ul>
@@ -42,12 +42,12 @@ export default function Navbar(){
                 <button 
                 type="button"
                 onClick={() => changeMode(mode === "dark" ? "light" : "dark")}
-                className="border border-gray-300 p-2 rounded-md hover:border-black transition-all cursor-pointer dark:border-gray-700 dark:hover:border-white">
+                className="border border-(--line) p-2 rounded-md hover:border-(--ink) transition-all cursor-pointer">
                     {mode === "dark" ? <Sun size={20} /> : <Moon size={20} />}
                 </button>
 
                 <Link href="https://github.com/Virenishere/shapecrate" target="_blank">
-                <button className="flex flex-row border border-gray-300 p-2 rounded-md text-center items-center hover:border-black transition-colors cursor-pointer dark:border-gray-700 dark:hover:border-white">
+                <button className="flex flex-row border border-(--line) p-2 rounded-md text-center items-center hover:border-(--ink) transition-colors cursor-pointer">
                     <Image className="dark:invert" src={ghicon} alt="github icon" width={20} height={20}/> <span>GitHub</span>
                 </button>
                 </Link>

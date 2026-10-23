@@ -25,7 +25,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${manrope.variable} ${dmMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+      <body className="min-h-full flex flex-col bg-[var(--bg)] font-sans text-[var(--ink)]">
+        {children}
+      </body>
     </html>
   );
 }

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="px-44 min-h-screen bg-[#fbfbfa] dark:bg-gray-900  border-amber-500 border-4">
+    <main className="px-44 min-h-screen bg-(--bg) border-amber-500 border-4">
       <Navbar />
             {/* <Image
               className="dark:invert h-[14px] w-4"

@@ -5,6 +5,38 @@
   --font-mono: var(--font-dm-mono);
 }
 
+:root {
+  --bg: #fbfbfa;
+  --surface: #ffffff;
+  --surface-2: #f3f4f2;
+  --surface-3: #e9ebe8;
+  --ink: #171918;
+  --ink-2: #555a57;
+  --ink-3: #7b817d;
+  --line: #dfe2de;
+  --accent: #625de8;
+  --accent-2: #dcdafe;
+  --lime: #c7f36b;
+  --shadow: 0 18px 55px rgba(27, 31, 29, 0.08);
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 26px;
+}
+
+html.dark {
+  --bg: #111312;
+  --surface: #181b19;
+  --surface-2: #202421;
+  --surface-3: #2a2f2b;
+  --ink: #f5f7f4;
+  --ink-2: #b6bcb8;
+  --ink-3: #818982;
+  --line: #303531;
+  --accent: #918df4;
+  --accent-2: #312e65;
+  --shadow: 0 18px 55px rgba(0, 0, 0, 0.28);
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 html {
@@ -17,11 +49,6 @@ html.dark {
 
 body {
   font-family: var(--font-manrope), sans-serif;
-  background-color: #fbfbfa;
-  color: #111827;
-}
-
-html.dark body {
-  background-color: #111827;
-  color: #f9fafb;
+  background-color: var(--bg);
+  color: var(--ink);
 }
