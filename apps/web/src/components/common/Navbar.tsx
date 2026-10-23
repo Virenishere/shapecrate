@@ -18,24 +18,32 @@ export default function Navbar(){
        
             {/* second part  */}
             
-                <ul className="flex gap-8 font-medium text-sm">   
+                <ul className="flex gap-8 font-medium text-sm ">   
+                    <Link href="/components" className=" hover:bg-gray-200 border-1 border-[#fbfbfa] hover:border-gray-200 rounded-lg p-2 transition-colors">
                     <li>Components</li>
+                    </Link>
+                    <Link href="/docs" className=" hover:bg-gray-200 border-1 border-[#fbfbfa] hover:border-gray-200 rounded-lg p-2 transition-colors">
                     <li>Documentation</li>
+                    </Link>
+                    <Link href="/open-source" className=" hover:bg-gray-200 border-1 border-[#fbfbfa] hover:border-gray-200 rounded-lg p-2 transition-colors">
                     <li>Open Source</li>
+                    </Link>
                 </ul>
            
             
             {/* third part  */}
             <div className="flex gap-2 text-sm">
                 {/* dark and light mode toggle  */}
-                <button className="border border-gray-300 p-2 rounded-md ">
+                <button className="  border border-gray-300 p-2 rounded-md hover:border-black transition-colors cursor-pointer">
                     <Moon size={20}/>
                     {/* <Sun /> */}
                 </button>
 
-                <button className="flex flex-row border border-gray-300 p-2 rounded-md text-center items-center">
+                <Link href="https://github.com/Virenishere/shapecrate" target="_blank">
+                <button className="flex flex-row border border-gray-300 p-2 rounded-md text-center items-center hover:border-black transition-colors cursor-pointer">
                     <Image src={ghicon} alt="github icon" width={20} height={20}/> <span>GitHub</span>
                 </button>
+                    </Link>
             </div> 
         </nav>
     )
