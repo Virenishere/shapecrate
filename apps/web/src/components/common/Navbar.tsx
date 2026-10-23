@@ -2,16 +2,18 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Moon,Sun } from 'lucide-react';
+import { Moon,Sun,Menu  } from 'lucide-react';
 
 import icon from "../../../public/vercel.svg"
 import ghicon from "../../../public/github.svg"
 import { useTheme } from "@/hooks/useTheme";
+import { useState } from "react";
 
 
 export default function Navbar(){
     const {mode, changeMode} = useTheme();
-    
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
     return(
         <nav className="flex justify-between py-6 -mx-44 px-44 border-b border-(--line)">
             {/* first part  */}
@@ -52,6 +54,12 @@ export default function Navbar(){
                 </button>
                 </Link>
             </div> 
+
+            {mobileMenuOpen && (
+                <div>
+                    <Menu />
+                </div>
+            )}
         </nav>
     )
 }
