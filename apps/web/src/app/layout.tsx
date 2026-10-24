@@ -27,9 +27,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${manrope.variable} ${dmMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full px-44 flex flex-col bg-[var(--bg)] font-sans text-[var(--ink)]">
+      <body className="min-h-full flex flex-col bg-(--bg) font-sans text-(--ink)">
         <Navbar />
-        {children}
+        <main className="flex-1 w-full px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 2xl:px-44">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
