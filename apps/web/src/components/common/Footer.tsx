@@ -20,25 +20,25 @@ export default function Footer() {
                             <Image className="dark:invert" src={icon} alt="shapecrate logomark" width={24} height={24} />
                             <span className="font-extrabold text-lg md:text-xl">shapecrate</span>
                         </Link>
-                        <p className="font-semibold text-sm text-(--ink-2) max-w-xs">
+                        <p className="font-base text-sm text-(--ink-2) max-w-xs">
                             Open-source building blocks for thoughtful interfaces.
                         </p>
                     </div>
 
                     {/* Links Grid: 2 Columns & 3 Rows */}
-                    <div className="grid grid-cols-2 gap-x-12 gap-y-3 font-semibold text-sm text-(--ink-2)m">
-                        <span  className="">Explore</span>
-                        <span className="">Components</span>
-                        <Link href="#" className="hover:underline">Documentation</Link>
-                        <Link href="#" className="hover:underline">Project</Link>
-                        <Link href="#" className="hover:underline">Open source</Link>
-                        <Link href="#" className="hover:underline">GitHub</Link>
+                    <div className="grid grid-cols-2 gap-x-12 gap-y-3 text-sm text-(--ink-3)">
+                        <span  className="font-medium">Explore</span>
+                        <span className="font-medium">Components</span>
+                        <Link href="#" className="hover:underline font-base">Documentation</Link>
+                        <Link href="#" className="hover:underline font-base">Project</Link>
+                        <Link href="#" className="hover:underline font-base">Open source</Link>
+                        <Link href="#" className="hover:underline font-base">GitHub</Link>
                     </div>
 
                 </div>
 
                 {/* Bottom Section: Starts on a new line */}
-                <div className="flex justify-between border-t border-(--line) pt-6 font-semibold text-sm text-(--ink-2)">
+                <div className="flex justify-between border-t border-(--line) pt-6 font-base text-xs text-(--ink-2)">
                     <div> Built for the web, shared with everyone.</div>
                     
                     <div>MIT licensed © {currentYear} shapecrate. All rights reserved</div>
