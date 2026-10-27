@@ -49,8 +49,49 @@ body {
   font-family: var(--font-manrope), sans-serif;
   background-color: var(--bg);
   color: var(--ink);
+  /* copy and drag disabled for all devices  */
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none;     /* IE 10 and IE 11 */
+  user-select: none;         /* Standard syntax */
 }
 
+/* coding font at hero section  */
 .coding{
   font-family: "JetBrains Mono", monospace;
+}
+
+/* radial-gradient at hero section  */
+.top-radial-gradient,
+.down-radial-gradient {
+  z-index: 0;
+  width: 18rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(2.5rem);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+
+.top-radial-gradient {
+  top: -5rem;
+  right: -5rem;
+
+  background: radial-gradient(
+    circle,
+   color-mix(in srgb, var(--lime) 80%, transparent) 0%,
+    color-mix(in srgb, var(--lime) 35%, transparent) 45%,
+    transparent 70%
+  );
+}
+
+.down-radial-gradient {
+  bottom: -5rem;
+  left: -5rem;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent) 80%, transparent) 0%,
+    color-mix(in srgb, var(--accent) 35%, transparent) 45%,
+    transparent 70%
+  );
 }

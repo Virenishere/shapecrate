@@ -52,21 +52,24 @@ export default function HeroSection() {
                 </div>
             </div>
             
-            {/* <div className="top-radial-gradient bg-red-800">trg</div>
-            <div className="down-radial-gradient bg-green-800">drg</div> */}
+            
             {/* Replace with your component preview / screenshot */}
-            <div className="aspect-video  w-full flex-1 rounded-2xl border border-(--line) bg-(--ink)">
-                <div className="flex gap-2 items-center border-b-[0.1px] border-(--ink-2) h-10">
-                    <div className="h-2 w-2 ml-2.5 bg-(--ink-3) rounded-full"></div>
-                    <div className="h-2 w-2 bg-(--ink-3) rounded-full"></div>
-                    <div className="h-2 w-2 bg-(--ink-3) rounded-full"></div>
-                    <span className="coding text-(--ink-3) text-xs font-semibold">button.html</span>
-                </div>   
-                <div className="text-xs coding">
-                    <div className="text-white ml-6 mt-6">1 &lt;button class="shape-button"&gt;</div>
-                    <div className="text-white ml-6 mt-4">2 Start Building</div>
-                    <div className="text-white ml-6 mt-4">3 &lt;/button&gt;</div>
-                <div className="bg-(--surface-2) h-22 m-2 rounded-2xl"></div>
+                <div className="relative isolate w-full flex-1">
+                <div aria-hidden="true" className="top-radial-gradient"></div>
+                <div aria-hidden="true" className="down-radial-gradient"></div>
+                <div className="relative z-10 aspect-video w-full rounded-2xl bg-(--ink)">
+                    <div className="flex h-10 items-center gap-2 border-b-[0.1px] border-(--ink-2)">
+                        <div className="ml-2.5 h-2 w-2 rounded-full bg-(--ink-3)"></div>
+                        <div className="h-2 w-2 rounded-full bg-(--ink-3)"></div>
+                        <div className="h-2 w-2 rounded-full bg-(--ink-3)"></div>
+                        <span className="coding text-xs font-semibold text-(--ink-3)">button.html</span>
+                    </div>
+                    <div className="coding text-xs">
+                        <div className="ml-6 mt-6 text-white">1 &lt;<span className="text-(--lime)">button</span> <span className="text-[#8584C2]">class=</span><span className="text-[#D2AB7A]">&quot;shape-button&quot;</span>&gt;</div>
+                        <div className="ml-6 mt-4 text-white">2 Start Building</div>
+                        <div className="ml-6 mt-4 text-white">3 &lt;/<span className="text-(--lime)">button</span>&gt;</div>
+                        <div className="m-2 h-22 rounded-2xl bg-(--surface-2)"></div>
+                    </div>
                 </div>            
             </div>
         </section>

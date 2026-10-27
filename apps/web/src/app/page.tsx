@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-(--bg) border-amber-500 border-4 transition-colors">
+    <main className="min-h-screen bg-(--bg) transition-colors">
       {/* <Navbar /> */}
       <Landing />
       {/* <Footer /> */}
