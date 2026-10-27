@@ -51,10 +51,23 @@ export default function HeroSection() {
                     <span className="flex items-center gap-1.5"><Check aria-hidden="true" className="size-4" /> Zero dependencies</span>
                 </div>
             </div>
-
+            
+            {/* <div className="top-radial-gradient bg-red-800">trg</div>
+            <div className="down-radial-gradient bg-green-800">drg</div> */}
             {/* Replace with your component preview / screenshot */}
-            <div className="aspect-video w-full flex-1 rounded-2xl border border-(--line)" aria-hidden="true">
-                sadasdas
+            <div className="aspect-video  w-full flex-1 rounded-2xl border border-(--line) bg-(--ink)">
+                <div className="flex gap-2 items-center border-b-[0.1px] border-(--ink-2) h-10">
+                    <div className="h-2 w-2 ml-2.5 bg-(--ink-3) rounded-full"></div>
+                    <div className="h-2 w-2 bg-(--ink-3) rounded-full"></div>
+                    <div className="h-2 w-2 bg-(--ink-3) rounded-full"></div>
+                    <span className="coding text-(--ink-3) text-xs font-semibold">button.html</span>
+                </div>   
+                <div className="text-xs coding">
+                    <div className="text-white ml-6 mt-6">1 &lt;button class="shape-button"&gt;</div>
+                    <div className="text-white ml-6 mt-4">2 Start Building</div>
+                    <div className="text-white ml-6 mt-4">3 &lt;/button&gt;</div>
+                <div className="bg-(--surface-2) h-22 m-2 rounded-2xl"></div>
+                </div>            
             </div>
         </section>
     );
