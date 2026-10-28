@@ -57,7 +57,7 @@ export default function HeroSection() {
                 <div className="relative isolate w-full flex-1">
                 <div aria-hidden="true" className="top-radial-gradient"></div>
                 <div aria-hidden="true" className="down-radial-gradient"></div>
-                <div className="relative z-10 aspect-video w-full rounded-2xl bg-(--ink)">
+                <div className="relative z-10 aspect-video w-full rounded-2xl bg-(--ink) bottom-[370px]">
                     <div className="flex h-10 items-center gap-2 border-b-[0.1px] border-(--ink-2)">
                         <div className="ml-2.5 h-2 w-2 rounded-full bg-(--ink-3)"></div>
                         <div className="h-2 w-2 rounded-full bg-(--ink-3)"></div>
@@ -65,10 +65,12 @@ export default function HeroSection() {
                         <span className="coding text-xs font-semibold text-(--ink-3)">button.html</span>
                     </div>
                     <div className="coding text-xs">
-                        <div className="ml-6 mt-6 text-white">1 &lt;<span className="text-(--lime)">button</span> <span className="text-[#8584C2]">class=</span><span className="text-[#D2AB7A]">&quot;shape-button&quot;</span>&gt;</div>
-                        <div className="ml-6 mt-4 text-white">2 Start Building</div>
-                        <div className="ml-6 mt-4 text-white">3 &lt;/<span className="text-(--lime)">button</span>&gt;</div>
-                        <div className="m-2 h-22 rounded-2xl bg-(--surface-2)"></div>
+                        <div className="ml-6 mt-6 text-white">1 &nbsp; &lt;<span className="text-(--lime)">button</span> <span className="text-[#8584C2]">class=</span><span className="text-[#D2AB7A]">&quot;shape-button&quot;</span>&gt;</div>
+                        <div className="ml-6 mt-4 text-white">2 &nbsp; &nbsp; Start building</div>
+                        <div className="ml-6 mt-4 mb-2 text-white">3 &nbsp; &lt;/<span className="text-(--lime)">button</span>&gt;</div>
+                        <div className="flex items-center justify-center mx-2 h-22 rounded-2xl bg-(--surface-2)">
+                            <button className="flex flex-row bg-(--accent) items-center rounded-lg px-4 py-2 text-(--surface) gap-2">Start building <ArrowRight size={14} /></button>
+                        </div>
                     </div>
                 </div>            
             </div>
