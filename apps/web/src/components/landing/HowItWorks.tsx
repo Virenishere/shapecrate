@@ -57,7 +57,7 @@ export default function HowItWorks() {
                 {number}
               </span>
               <div
-                className="mt-8 sm:mt-10 flex size-10 shrink-0 items-center justify-center rounded-xl bg-[#eeedfe] text-(--accent) dark:bg-[#312e65]"
+                className="mt-8 sm:mt-10 flex size-10 shrink-0 items-center justify-center rounded-xl bg-(--accent-2) text-(--accent)"
                 aria-hidden="true"
               >
                 <Icon className="size-[18px]" strokeWidth={1.75} />

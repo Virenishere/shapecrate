@@ -10,7 +10,7 @@ export default function HeroSection() {
       {/* Left Column: Heading, description, and CTA actions */}
       <div className="flex w-full flex-1 flex-col items-center gap-6 text-center lg:items-start lg:text-left">
         <div className="inline-flex max-w-full items-center gap-2 rounded-full border border-(--line) bg-(--surface) py-1 pr-3.5 pl-1.5 text-xs sm:text-sm shadow-xs transition hover:border-(--ink-3)/40">
-          <span className="rounded-full bg-(--lime) px-2.5 py-0.5 text-xs font-semibold text-neutral-900">
+          <span className="rounded-full bg-(--lime) px-2.5 py-0.5 text-xs font-semibold text-[#171918]">
             New
           </span>
           <span className="truncate font-medium text-(--ink-2)">

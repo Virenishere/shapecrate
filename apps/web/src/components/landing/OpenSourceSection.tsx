@@ -8,7 +8,7 @@ export default function OpenSourceSection() {
     <section
       id="open-source"
       aria-labelledby="open-source-heading"
-      className="mx-4 my-12 grid max-w-6xl grid-cols-1 items-center gap-10 rounded-3xl border border-[#2f3531] bg-[#202522] p-8 sm:mx-6 sm:p-12 lg:mx-auto lg:grid-cols-2 lg:gap-14 lg:p-16"
+      className="mx-4 my-12 grid max-w-6xl grid-cols-1 items-center gap-10 rounded-3xl border border-[#303531] bg-[#181b19] p-8 sm:mx-6 sm:p-12 lg:mx-auto lg:grid-cols-2 lg:gap-14 lg:p-16"
     >
       {/* Left Column: Heading, description and CTA */}
       <div className="flex flex-col items-start">
@@ -25,14 +25,14 @@ export default function OpenSourceSection() {
           for everyone.
         </h2>
 
-        <p className="mt-4 max-w-md text-sm leading-relaxed text-[#9ca39e] sm:text-base">
+        <p className="mt-4 max-w-md text-sm leading-relaxed text-[#b6bcb8] sm:text-base">
           Shapecrate is free and open source. Read the code, suggest an
           improvement, or contribute your own component.
         </p>
 
         <Link
           href="/open-source"
-          className="mt-8 inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-neutral-900 shadow-sm transition-all hover:bg-neutral-100 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          className="mt-8 inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-[#171918] shadow-sm transition-all hover:bg-neutral-100 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
           Learn about the project
           <ArrowRight className="size-4" aria-hidden="true" />
@@ -42,7 +42,7 @@ export default function OpenSourceSection() {
       {/* Right Column: Repository and contribution cards */}
       <div className="flex w-full flex-col gap-4 lg:items-end">
         {/* card 1 */}
-        <div className="flex w-full max-w-md items-center gap-3.5 rounded-2xl border border-white/10 bg-[#2d332f] p-4 sm:p-5 shadow-sm transition-all hover:border-white/20 hover:bg-[#343b36]">
+        <div className="flex w-full max-w-md items-center gap-3.5 rounded-2xl border border-[#303531] bg-[#2a2f2b] p-4 sm:p-5 shadow-sm transition-all hover:border-white/20 hover:bg-[#343b36]">
           <Image
             src={ghicon}
             alt="GitHub logo"
@@ -55,7 +55,7 @@ export default function OpenSourceSection() {
             <span className="truncate text-sm font-medium text-white">
               shapecrate / components
             </span>
-            <span className="text-xs text-neutral-400">
+            <span className="text-xs text-[#818982]">
               Public repository
             </span>
           </div>
@@ -64,14 +64,14 @@ export default function OpenSourceSection() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="View shapecrate components repository on GitHub (opens in a new tab)"
-            className="ml-auto rounded-lg p-1.5 text-neutral-400 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-white"
+            className="ml-auto rounded-lg p-1.5 text-[#818982] transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-white"
           >
             <ExternalLink className="size-4" aria-hidden="true" />
           </Link>
         </div>
 
         {/* card 2 */}
-        <div className="grid w-full max-w-sm grid-cols-[auto_1fr] items-baseline gap-x-3 gap-y-0.5 rounded-2xl border border-white/10 bg-[#222724]/90 p-4 sm:max-w-md sm:p-5 lg:max-w-[380px] shadow-sm">
+        <div className="grid w-full max-w-sm grid-cols-[auto_1fr] items-baseline gap-x-3 gap-y-0.5 rounded-2xl border border-[#303531] bg-[#202421] p-4 sm:max-w-md sm:p-5 lg:max-w-[380px] shadow-sm">
           <div
             className="size-2 self-center rounded-full bg-(--lime) shadow-[0_0_8px_rgba(199,243,107,0.7)]"
             aria-hidden="true"
@@ -79,7 +79,7 @@ export default function OpenSourceSection() {
           <div className="col-start-2 row-start-1 font-mono text-xs font-medium text-neutral-200 sm:text-sm">
             feat: add new background patterns
           </div>
-          <div className="col-start-2 row-start-2 text-xs text-neutral-400">
+          <div className="col-start-2 row-start-2 text-xs text-[#818982]">
             Contributions welcome
           </div>
         </div>
