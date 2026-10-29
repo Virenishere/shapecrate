@@ -1,143 +1,169 @@
-'use client'
+"use client";
 
+import { useSyncExternalStore, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Moon, Sun, Menu, X } from 'lucide-react';
+import { Moon, Sun, Menu, X } from "lucide-react";
 
 import icon from "../../../public/vercel.svg";
 import ghicon from "../../../public/github.svg";
 import { useTheme } from "@/hooks/useTheme";
-import { useState, useEffect } from "react";
 
-const NAV_LINKS: { href: string;    label: string }[] = [
-    { href: "/components", label: "Components" },
-    { href: "/docs", label: "Documentation" },
-    { href: "/open-source", label: "Open Source" },
-];
+const NAV_LINKS = [
+  { href: "/components", label: "Components" },
+  { href: "/docs", label: "Documentation" },
+  { href: "/open-source", label: "Open Source" },
+] as const;
 
 const GITHUB_URL = "https://github.com/Virenishere/shapecrate";
 
+const subscribe = () => () => {};
+const getSnapshot = () => true;
+const getServerSnapshot = () => false;
+
 export default function Navbar() {
-    const { mode, changeMode } = useTheme();
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [mounted, setMounted] = useState(false);
+  const { mode, changeMode } = useTheme();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const mounted = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
-    // Prevent hydration mismatch by only rendering theme-dependent elements after mount
-    useEffect(() => {
-        setMounted(true);
-    }, []);
+  // Close the mobile menu on Escape and when viewport grows to desktop
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileMenuOpen(false);
+    };
+    const mq = window.matchMedia("(min-width: 768px)");
+    const onChange = (e: MediaQueryListEvent) => {
+      if (e.matches) setMobileMenuOpen(false);
+    };
 
-    // Close the mobile menu on Escape, and when the screen grows to desktop/tablet size
-    useEffect(() => {
-        const onKeyDown = (e: KeyboardEvent) => {
-            if (e.key === "Escape") setMobileMenuOpen(false);
-        };
-        const mq = window.matchMedia("(min-width: 768px)");
-        const onChange = (e: MediaQueryListEvent) => {
-            if (e.matches) setMobileMenuOpen(false);
-        };
+    window.addEventListener("keydown", onKeyDown);
+    mq.addEventListener("change", onChange);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      mq.removeEventListener("change", onChange);
+    };
+  }, []);
 
-        window.addEventListener("keydown", onKeyDown);
-        mq.addEventListener("change", onChange);
-        return () => {
-            window.removeEventListener("keydown", onKeyDown);
-            mq.removeEventListener("change", onChange);
-        };
-    }, []);
+  const actionButtonClasses =
+    "flex size-9 items-center justify-center rounded-xl border border-(--line) bg-(--surface) text-(--ink-2) shadow-2xs transition-colors hover:border-(--ink-3) hover:text-(--ink) focus-visible:outline-2 focus-visible:outline-offset-2";
 
-    const iconButton =
-        "border border-(--line) rounded-md hover:border-(--ink) transition-all cursor-pointer flex items-center justify-center w-9 h-9 shrink-0";
+  return (
+    <nav className="sticky top-0 z-50 w-full border-b border-(--line) bg-(--bg)/85 backdrop-blur-md transition-colors">
+      <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        {/* Brand Logo */}
+        <Link
+          href="/"
+          className="group flex items-center gap-2.5 shrink-0 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2"
+          aria-label="shapecrate home"
+        >
+          <Image
+            className="transition-transform group-hover:scale-105 dark:invert"
+            src={icon}
+            alt="shapecrate logomark"
+            width={22}
+            height={22}
+          />
+          <span className="font-bold text-base sm:text-lg tracking-tight text-(--ink)">
+            shapecrate
+          </span>
+        </Link>
 
-    return (
-        <nav className="bg-(--bg) dark:bg-(--bg) sticky top-0 z-50 w-full border-b border-(--line)">
-            <div className="relative mx-auto flex max-w-screen-2xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-16 xl:px-32 2xl:px-44">
+        {/* Desktop / Tablet Navigation Links */}
+        <ul className="hidden md:flex items-center gap-1 text-sm font-medium text-(--ink-2)">
+          {NAV_LINKS.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className="rounded-lg px-3 py-1.5 transition-colors hover:bg-(--surface-2) hover:text-(--ink)"
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
 
-                {/* first part: Logo (icon only on mobile, icon + text from sm up) */}
-                <Link className="flex items-center gap-2 shrink-0" href="/" aria-label="shapecrate home">
-                    <Image className="dark:invert" src={icon} alt="shapecrate logomark" width={24} height={24} />
-                    <span className="hidden sm:inline font-extrabold text-lg md:text-xl">shapecrate</span>
-                </Link>
+        {/* Action Controls (Theme, GitHub, Mobile Menu Toggle) */}
+        <div className="flex items-center gap-2">
+          {/* Theme Toggle */}
+          <button
+            type="button"
+            onClick={() => changeMode(mode === "dark" ? "light" : "dark")}
+            aria-label={
+              mounted && mode === "dark"
+                ? "Switch to light mode"
+                : "Switch to dark mode"
+            }
+            className={actionButtonClasses}
+          >
+            {!mounted ? (
+              <span className="size-4" aria-hidden="true" />
+            ) : mode === "dark" ? (
+              <Sun className="size-4 text-(--lime)" aria-hidden="true" />
+            ) : (
+              <Moon className="size-4" aria-hidden="true" />
+            )}
+          </button>
 
-                {/* second part: Desktop / Tablet Navigation Links */}
-                <ul className="hidden md:flex items-center gap-1 lg:gap-6 font-semibold text-sm text-(--ink-2)">
-                    {NAV_LINKS.map((link) => (
-                        <li key={link.href}>
-                            <Link
-                                href={link.href}
-                                className="block p-2 rounded-lg transition-colors hover:bg-(--surface-2) hover:border-(--line) hover:text-(--ink)"
-                            >
-                                {link.label}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
+          {/* GitHub Link */}
+          <Link
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="shapecrate on GitHub (opens in a new tab)"
+            className="flex h-9 items-center justify-center gap-2 rounded-xl border border-(--line) bg-(--surface) px-3 text-sm font-medium text-(--ink-2) shadow-2xs transition-colors hover:border-(--ink-3) hover:text-(--ink) focus-visible:outline-2 focus-visible:outline-offset-2"
+          >
+            <Image
+              className="transition-colors dark:invert"
+              src={ghicon}
+              alt=""
+              aria-hidden="true"
+              width={18}
+              height={18}
+            />
+            <span className="hidden sm:inline">GitHub</span>
+          </Link>
 
-                {/* third part: Actions (Theme Toggle, GitHub, Mobile Menu Button) */}
-                <div className="flex items-center gap-2 font-semibold text-sm">
-                    {/* dark and light mode toggle */}
-                    <button
-                        type="button"
-                        onClick={() => changeMode(mode === "dark" ? "light" : "dark")}
-                        aria-label="Toggle theme"
-                        className={iconButton}
-                    >
-                        {!mounted ? (
-                            <div className="w-5 h-5" />
-                        ) : mode === "dark" ? (
-                            <Sun size={20} />
-                        ) : (
-                            <Moon size={20} />
-                        )}
-                    </button>
+          {/* Mobile Menu Button */}
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen((open) => !open)}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
+            className={`${actionButtonClasses} md:hidden`}
+          >
+            {mobileMenuOpen ? (
+              <X className="size-4.5" aria-hidden="true" />
+            ) : (
+              <Menu className="size-4.5" aria-hidden="true" />
+            )}
+          </button>
+        </div>
+      </div>
 
-                    {/* GitHub: icon only on mobile/tablet, icon + text on large screens */}
-                    <Link
-                        href={GITHUB_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="shapecrate on GitHub"
-                        className="flex items-center justify-center gap-2 h-9 w-9 lg:w-auto lg:px-3 border border-(--line) rounded-md hover:border-(--ink) transition-colors cursor-pointer"
-                    >
-                        <Image className="dark:invert" src={ghicon} alt="github icon" width={20} height={20} />
-                        <span className="hidden lg:inline">GitHub</span>
-                    </Link>
-
-                    {/* Mobile Menu Trigger Button */}
-                    <button
-                        type="button"
-                        onClick={() => setMobileMenuOpen((open) => !open)}
-                        aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-                        aria-expanded={mobileMenuOpen}
-                        aria-controls="mobile-menu"
-                        className={`${iconButton} md:hidden`}
-                    >
-                        {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-                    </button>
-                </div>
-
-                {/* Mobile Dropdown Drawer */}
-                <div
-                    id="mobile-menu"
-                    className={`absolute top-full left-0 w-full md:hidden border-b border-(--line) bg-(--bg) dark:bg-(--bg) shadow-lg transition-all duration-200 ease-out ${
-                        mobileMenuOpen
-                            ? "opacity-100 translate-y-0 visible"
-                            : "opacity-0 -translate-y-2 invisible pointer-events-none"
-                    }`}
-                >
-                    <div className="flex flex-col gap-1 px-4 py-4 sm:px-6 font-semibold text-sm">
-                        {NAV_LINKS.map((link) => (
-                            <Link
-                                key={link.href}
-                                href={link.href}
-                                onClick={() => setMobileMenuOpen(false)}
-                                className="p-3 rounded-lg hover:bg-(--surface-2) text-(--ink-2) hover:text-(--ink) transition-colors"
-                            >
-                                {link.label}
-                            </Link>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </nav>
-    );
+      {/* Mobile Menu Drawer */}
+      <div
+        id="mobile-menu"
+        className={`border-b border-(--line) bg-(--bg)/95 backdrop-blur-xl md:hidden transition-all duration-200 ease-out ${
+          mobileMenuOpen
+            ? "max-h-64 opacity-100 visible"
+            : "max-h-0 opacity-0 invisible overflow-hidden"
+        }`}
+      >
+        <ul className="flex flex-col gap-1 px-4 py-3 sm:px-6 font-medium text-sm">
+          {NAV_LINKS.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="block rounded-lg px-3 py-2 text-(--ink-2) transition-colors hover:bg-(--surface-2) hover:text-(--ink)"
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
+  );
 }

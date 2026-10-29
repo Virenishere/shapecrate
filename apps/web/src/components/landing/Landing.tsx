@@ -1,12 +1,14 @@
 import React from "react";
 import HeroSection from "./HeroSection";
 import HowItWorks from "./HowItWorks";
+import OpenSourceSection from "./OpenSourceSection";
 
 export default function Landing(){
     return(
-        <div className="border-2 border-blue-300 ">
+        <div>
             <HeroSection />
             <HowItWorks />
+            <OpenSourceSection />
         </div>
     )
 }

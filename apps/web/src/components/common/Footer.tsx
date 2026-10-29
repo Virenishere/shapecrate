@@ -9,7 +9,7 @@ export default function Footer() {
     
     return (
         <footer className="border-t border-(--line)">
-            <div className="mx-auto max-w-screen-2xl px-4 py-8 sm:px-6 sm:py-10 md:px-8 md:py-12 lg:px-16 xl:px-32 2xl:px-44">
+            <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8 md:py-12">
                 
                 {/* Top Section: Brand Info + Links Grid */}
                 <div className="flex flex-col justify-between gap-8 pb-8 md:flex-row md:items-start">

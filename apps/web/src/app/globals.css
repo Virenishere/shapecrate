@@ -63,35 +63,34 @@ body {
 /* radial-gradient at hero section  */
 .top-radial-gradient,
 .down-radial-gradient {
+  position: absolute !important;
   z-index: 0;
-  width: 18rem;
+  width: 22rem;
   aspect-ratio: 1;
   border-radius: 50%;
-  filter: blur(2.5rem);
-  opacity: 0.7;
+  filter: blur(3.5rem);
+  opacity: 0.65;
   pointer-events: none;
 }
 
-
 .top-radial-gradient {
-  top: -5rem;
-  right: -5rem;
-
+  top: -4rem;
+  right: -4rem;
   background: radial-gradient(
     circle,
-   color-mix(in srgb, var(--lime) 80%, transparent) 0%,
-    color-mix(in srgb, var(--lime) 35%, transparent) 45%,
+    color-mix(in srgb, var(--lime) 85%, transparent) 0%,
+    color-mix(in srgb, var(--lime) 30%, transparent) 45%,
     transparent 70%
   );
 }
 
 .down-radial-gradient {
-  bottom: -5rem;
-  left: -5rem;
+  bottom: -4rem;
+  left: -4rem;
   background: radial-gradient(
     circle,
-    color-mix(in srgb, var(--accent) 80%, transparent) 0%,
-    color-mix(in srgb, var(--accent) 35%, transparent) 45%,
+    color-mix(in srgb, var(--accent) 85%, transparent) 0%,
+    color-mix(in srgb, var(--accent) 30%, transparent) 45%,
     transparent 70%
   );
 }
