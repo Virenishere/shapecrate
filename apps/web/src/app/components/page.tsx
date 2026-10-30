@@ -1,7 +1,5 @@
-export default function Components(){
-    return(
-        <div>
-           components
-        </div>
-    )
+import Component from "@/components/preview/Component";
+
+export default function ComponentsPage() {
+  return <Component />;
 }

@@ -19,7 +19,8 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@shapecrate/components": ["../../packages/components/src/index.ts"]
     }
   },
   "include": [

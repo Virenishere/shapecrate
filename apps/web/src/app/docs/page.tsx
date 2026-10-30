@@ -1,7 +1,5 @@
-export default function Documentation(){
-    return(
-        <div>
-            Docs
-        </div>
-    )
+import Documentation from "@/components/docs/Documentation";
+
+export default function DocumentationPage() {
+  return <Documentation />;
 }
