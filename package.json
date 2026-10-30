@@ -7,6 +7,11 @@
   ],
   "type": "module",
   "private": true,
+  "scripts": {
+    "dev": "bun --filter web dev",
+    "build": "bun --filter web build",
+    "lint": "bun --filter web lint"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
