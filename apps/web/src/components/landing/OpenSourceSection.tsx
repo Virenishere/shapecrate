@@ -8,7 +8,7 @@ export default function OpenSourceSection() {
     <section
       id="open-source"
       aria-labelledby="open-source-heading"
-      className="mx-4 my-12 grid max-w-6xl grid-cols-1 items-center gap-10 rounded-3xl border border-[#303531] bg-[#181b19] p-8 sm:mx-6 sm:p-12 lg:mx-auto lg:grid-cols-2 lg:gap-14 lg:p-16"
+      className="mx-4 my-12 grid max-w-6xl grid-cols-1 items-center gap-10 rounded-3xl border border-[#303531] bg-[#181b19] p-6 sm:mx-6 sm:p-12 lg:mx-auto lg:grid-cols-2 lg:gap-14 lg:p-16"
     >
       {/* Left Column: Heading, description and CTA */}
       <div className="flex flex-col items-start">

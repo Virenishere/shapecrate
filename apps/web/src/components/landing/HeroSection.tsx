@@ -21,7 +21,7 @@ export default function HeroSection() {
 
         <h1
           id="hero-heading"
-          className="text-[clamp(2.5rem,5.5vw,4.75rem)] font-bold tracking-tight leading-[1.08] text-(--ink)"
+          className="text-[clamp(2.15rem,5.5vw,4.75rem)] font-bold tracking-tight leading-[1.08] text-(--ink)"
         >
           <span className="block">Beautiful UI,</span>
           <span className="block text-(--accent)">

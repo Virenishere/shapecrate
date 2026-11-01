@@ -26,7 +26,7 @@ export default function RoadMap() {
     <section
       id="roadmap"
       aria-labelledby="roadmap-heading"
-      className="mx-4 my-12 max-w-6xl rounded-3xl border border-[#303531] bg-[#181b19] p-8 sm:mx-6 sm:p-12 lg:mx-auto lg:p-16 transition-colors"
+      className="mx-4 my-12 max-w-6xl rounded-3xl border border-[#303531] bg-[#181b19] p-6 sm:mx-6 sm:p-12 lg:mx-auto lg:p-16 transition-colors"
     >
       <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
         {/* Left Column: Heading and description */}

@@ -142,7 +142,7 @@ export default function RootLayout({
       lang="en"
       className={`${manrope.variable} ${dmMono.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-(--bg) font-sans text-(--ink)">
+      <body className="min-h-full flex flex-col bg-(--bg) font-sans text-(--ink) overflow-x-clip">
         <JsonLd data={siteWideJsonLd} />
         <Navbar />
         <main className="flex-1 w-full">
