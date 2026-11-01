@@ -30,6 +30,11 @@ export default async function Image({
     : "Free, copy-paste UI building block made with plain HTML and CSS.";
   const tags = item ? item.tags : ["ui", "component"];
 
+  // Visual preview element depending on component category or id
+  const isButton = item?.category === "buttons";
+  const isGrid = item?.id === "soft-grid";
+  const isSpotlight = item?.id === "radial-spotlight";
+
   return new ImageResponse(
     (
       <div
@@ -40,14 +45,14 @@ export default async function Image({
           flexDirection: "column",
           backgroundColor: "#111312",
           backgroundImage:
-            "radial-gradient(circle at 80% 20%, rgba(98, 93, 232, 0.3) 0%, transparent 50%), radial-gradient(circle at 20% 80%, rgba(199, 243, 107, 0.15) 0%, transparent 45%)",
+            "radial-gradient(circle at 85% 15%, rgba(98, 93, 232, 0.28) 0%, transparent 48%), radial-gradient(circle at 15% 85%, rgba(199, 243, 107, 0.15) 0%, transparent 45%)",
           color: "#f5f7f4",
-          padding: "60px 70px",
+          padding: "50px 60px",
           justifyContent: "space-between",
           fontFamily: "sans-serif",
         }}
       >
-        {/* Header: Shapecrate branding + category pill */}
+        {/* Top Header: Shapecrate branding + Category Pill */}
         <div
           style={{
             display: "flex",
@@ -87,7 +92,7 @@ export default async function Image({
               backgroundColor: "rgba(145, 141, 244, 0.15)",
               border: "1px solid rgba(145, 141, 244, 0.4)",
               color: "#918df4",
-              fontSize: 16,
+              fontSize: 15,
               fontWeight: 700,
               letterSpacing: "0.1em",
             }}
@@ -96,73 +101,136 @@ export default async function Image({
           </div>
         </div>
 
-        {/* Center: Component Title, Description, and Tags */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
-          <h1
+        {/* Center: 2-Column Split (Meta info on left, Visual preview canvas on right) */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: "50px",
+            width: "100%",
+          }}
+        >
+          {/* Left Column: Component Details */}
+          <div
             style={{
-              fontSize: 68,
-              fontWeight: 800,
-              letterSpacing: "-0.03em",
-              color: "#ffffff",
-              margin: 0,
-              lineHeight: 1.1,
+              display: "flex",
+              flexDirection: "column",
+              gap: "16px",
+              flex: "1 1 540px",
+              maxWidth: "580px",
             }}
           >
-            {title}
-          </h1>
+            <h1
+              style={{
+                fontSize: 56,
+                fontWeight: 800,
+                letterSpacing: "-0.03em",
+                color: "#ffffff",
+                margin: 0,
+                lineHeight: 1.1,
+              }}
+            >
+              {title}
+            </h1>
 
-          <p
-            style={{
-              fontSize: 24,
-              color: "#b6bcb8",
-              lineHeight: 1.45,
-              maxWidth: "920px",
-              margin: 0,
-            }}
-          >
-            {description}
-          </p>
+            <p
+              style={{
+                fontSize: 22,
+                color: "#b6bcb8",
+                lineHeight: 1.45,
+                margin: 0,
+              }}
+            >
+              {description}
+            </p>
 
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                marginTop: "4px",
+              }}
+            >
+              {tags.map((tag) => (
+                <div
+                  key={tag}
+                  style={{
+                    display: "flex",
+                    padding: "6px 14px",
+                    borderRadius: "8px",
+                    backgroundColor: "#202421",
+                    border: "1px solid #303531",
+                    fontSize: 15,
+                    color: "#c7f36b",
+                    fontWeight: 600,
+                  }}
+                >
+                  #{tag}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Column: Visual Component Preview Canvas */}
           <div
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "10px",
-              marginTop: "8px",
+              justifyContent: "center",
+              width: "440px",
+              height: "280px",
+              borderRadius: "20px",
+              border: "1px solid rgba(255, 255, 255, 0.12)",
+              backgroundColor: isGrid || isSpotlight ? "#fbfbfa" : "#1a1d1b",
+              backgroundImage: isGrid
+                ? "linear-gradient(to right, rgba(99, 102, 241, 0.28) 1px, transparent 1px), linear-gradient(to bottom, rgba(99, 102, 241, 0.28) 1px, transparent 1px)"
+                : isSpotlight
+                ? "radial-gradient(circle at 50% 50%, rgba(147, 130, 245, 0.75) 0%, rgba(167, 139, 250, 0.4) 30%, rgba(98, 93, 232, 0.15) 50%, transparent 70%)"
+                : isButton
+                ? "radial-gradient(circle at 50% 50%, rgba(98, 93, 232, 0.15) 0%, transparent 60%)"
+                : "radial-gradient(circle at 15% 25%, rgba(52, 211, 153, 0.55) 0%, transparent 48%), radial-gradient(circle at 85% 25%, rgba(96, 165, 250, 0.55) 0%, transparent 48%), radial-gradient(circle at 50% 85%, rgba(167, 139, 250, 0.45) 0%, transparent 55%)",
+              backgroundSize: isGrid ? "24px 24px" : "auto",
+              overflow: "hidden",
+              position: "relative",
+              boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
             }}
           >
-            {tags.map((tag) => (
+            {isButton ? (
               <div
-                key={tag}
                 style={{
                   display: "flex",
-                  padding: "6px 14px",
-                  borderRadius: "8px",
-                  backgroundColor: "#202421",
-                  border: "1px solid #303531",
-                  fontSize: 16,
-                  color: "#c7f36b",
+                  alignItems: "center",
+                  gap: "10px",
+                  backgroundColor: "#625de8",
+                  color: "#ffffff",
+                  padding: "14px 28px",
+                  borderRadius: "14px",
+                  fontSize: "17px",
                   fontWeight: 600,
+                  boxShadow: "0 10px 25px rgba(98, 93, 232, 0.45)",
                 }}
               >
-                #{tag}
+                <span>Start building</span>
+                <span style={{ fontSize: "18px" }}>→</span>
               </div>
-            ))}
+            ) : null}
           </div>
         </div>
 
-        {/* Footer: Copy info and URL */}
+        {/* Bottom Footer: URL & copy action */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
             borderTop: "1px solid #303531",
-            paddingTop: "24px",
+            paddingTop: "22px",
             width: "100%",
           }}
         >
-          <span style={{ fontSize: 18, color: "#818982" }}>
+          <span style={{ fontSize: 16, color: "#818982" }}>
             shapecrate.vercel.app/components/{id}
           </span>
           <div
@@ -171,7 +239,7 @@ export default async function Image({
               alignItems: "center",
               gap: "8px",
               color: "#f5f7f4",
-              fontSize: 18,
+              fontSize: 16,
               fontWeight: 600,
             }}
           >
@@ -185,4 +253,3 @@ export default async function Image({
     }
   );
 }
-
