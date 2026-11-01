@@ -12,8 +12,8 @@ import { simpleButton } from "./elements/buttons/simple-button";
 import type { ComponentItem } from "./types";
 
 export const componentsRegistry: ComponentItem[] = [
-  auroraGradient,
-  radialSpotlight,
-  softGrid,
+  // auroraGradient,
+  // radialSpotlight,
+  // softGrid,
   simpleButton,
 ];

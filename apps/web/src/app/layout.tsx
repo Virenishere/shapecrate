@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Manrope, DM_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/common/Footer";
@@ -16,9 +16,72 @@ const dmMono = DM_Mono({
   weight: ["400", "500"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://shapecrate.vercel.app";
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fbfbfa" },
+    { media: "(prefers-color-scheme: dark)", color: "#111312" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
-  title: "Shapecrate — Copy-paste UI building blocks",
-  description: "Free, copy-paste building blocks made with plain HTML and CSS for modern web apps.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Shapecrate — Free HTML, CSS & Tailwind UI Components",
+    template: "%s | Shapecrate",
+  },
+  description:
+    "Free, copy-paste building blocks made with plain HTML and CSS for modern web apps. Zero dependencies, no npm installs, 100% open source.",
+  keywords: [
+    "UI components",
+    "Tailwind CSS",
+    "HTML CSS",
+    "copy paste UI",
+    "web components",
+    "open source UI",
+    "CSS buttons",
+    "CSS gradients",
+    "modern web design",
+    "Shapecrate",
+  ],
+  authors: [{ name: "Shapecrate", url: "https://github.com/Virenishere/shapecrate" }],
+  creator: "Shapecrate",
+  publisher: "Shapecrate",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    siteName: "Shapecrate",
+    title: "Shapecrate — Free HTML, CSS & Tailwind UI Components",
+    description:
+      "Free, copy-paste building blocks made with plain HTML and CSS for modern web apps. Zero dependencies, no npm installs.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Shapecrate — Free HTML, CSS & Tailwind UI Components",
+    description:
+      "Free, copy-paste building blocks made with plain HTML and CSS for modern web apps. Zero dependencies, no npm installs.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
