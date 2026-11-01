@@ -1,5 +1,32 @@
 import type { Metadata } from "next";
 import OpenSource from "@/components/open-source/OpenSource";
+import { JsonLd } from "@/components/seo/JsonLd";
+
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://shapecrate.vercel.app";
+
+const openSourceJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: siteUrl,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Open Source",
+          item: `${siteUrl}/open-source`,
+        },
+      ],
+    },
+  ],
+};
 
 export const metadata: Metadata = {
   title: "Open Source UI Library & Contribution Guide",
@@ -31,5 +58,10 @@ export const metadata: Metadata = {
 };
 
 export default function OpenSourcePage() {
-  return <OpenSource />;
+  return (
+    <>
+      <JsonLd data={openSourceJsonLd} />
+      <OpenSource />
+    </>
+  );
 }

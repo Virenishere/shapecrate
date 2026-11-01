@@ -1,8 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope, DM_Mono } from "next/font/google";
+import { Manrope, DM_Mono, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/common/Footer";
 import Navbar from "@/components/common/Navbar";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -16,7 +17,43 @@ const dmMono = DM_Mono({
   weight: ["400", "500"],
 });
 
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
+
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://shapecrate.vercel.app";
+
+const siteWideJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: "Shapecrate",
+      description:
+        "Free, copy-paste building blocks made with plain HTML and CSS for modern web apps.",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${siteUrl}/components?q={search_term_string}`,
+        },
+        "query-input": "required name=search_term_string",
+      },
+    },
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      name: "Shapecrate",
+      url: siteUrl,
+      logo: `${siteUrl}/favicon.ico`,
+      sameAs: ["https://github.com/Virenishere/shapecrate"],
+    },
+  ],
+};
 
 export const viewport: Viewport = {
   themeColor: [
@@ -92,9 +129,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${dmMono.variable} h-full antialiased`}
+      className={`${manrope.variable} ${dmMono.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-(--bg) font-sans text-(--ink)">
+        <JsonLd data={siteWideJsonLd} />
         <Navbar />
         <main className="flex-1 w-full">
           {children}

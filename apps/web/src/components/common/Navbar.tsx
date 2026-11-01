@@ -62,6 +62,7 @@ export default function Navbar() {
             alt="shapecrate logomark"
             width={22}
             height={22}
+            priority
           />
           <span className="font-bold text-base sm:text-lg tracking-tight text-(--ink)">
             shapecrate

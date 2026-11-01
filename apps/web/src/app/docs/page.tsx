@@ -1,5 +1,44 @@
 import type { Metadata } from "next";
 import Documentation from "@/components/docs/Documentation";
+import { JsonLd } from "@/components/seo/JsonLd";
+
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://shapecrate.vercel.app";
+
+const docsJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: siteUrl,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Documentation",
+          item: `${siteUrl}/docs`,
+        },
+      ],
+    },
+    {
+      "@type": "TechArticle",
+      headline: "Shapecrate Documentation & Integration Guide",
+      description:
+        "Learn how to integrate Shapecrate components into React, Next.js, Vue, or static HTML.",
+      url: `${siteUrl}/docs`,
+      author: {
+        "@type": "Organization",
+        name: "Shapecrate",
+        url: siteUrl,
+      },
+    },
+  ],
+};
 
 export const metadata: Metadata = {
   title: "Documentation & Usage Guide",
@@ -31,5 +70,10 @@ export const metadata: Metadata = {
 };
 
 export default function DocumentationPage() {
-  return <Documentation />;
+  return (
+    <>
+      <JsonLd data={docsJsonLd} />
+      <Documentation />
+    </>
+  );
 }
