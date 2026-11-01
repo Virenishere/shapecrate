@@ -3,7 +3,7 @@
 import { useSyncExternalStore, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Moon, Sun, Menu, X } from "lucide-react";
+import { Moon, Sun, Menu, X, Star } from "lucide-react";
 
 import icon from "../../../public/vercel.svg";
 import ghicon from "../../../public/github.svg";
@@ -24,7 +24,25 @@ const getServerSnapshot = () => false;
 export default function Navbar() {
   const { mode, changeMode } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [stars, setStars] = useState<number | null>(null);
   const mounted = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+
+  // Fetch GitHub repository star count
+  useEffect(() => {
+    fetch("https://api.github.com/repos/virenishere/shapecrate")
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch GitHub repo data");
+        return res.json();
+      })
+      .then((data) => {
+        if (typeof data?.stargazers_count === "number") {
+          setStars(data.stargazers_count);
+        }
+      })
+      .catch(() => {
+        // Fallback silently if offline or rate limited
+      });
+  }, []);
 
   // Close the mobile menu on Escape and when viewport grows to desktop
   useEffect(() => {
@@ -105,13 +123,14 @@ export default function Navbar() {
             )}
           </button>
 
-          {/* GitHub Link */}
+          {/* GitHub Link with Live Star Count */}
           <Link
             href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="shapecrate on GitHub (opens in a new tab)"
-            className="flex h-9 items-center justify-center gap-2 rounded-xl border border-(--line) bg-(--surface) px-3 text-sm font-medium text-(--ink-2) shadow-2xs transition-colors hover:border-(--ink-3) hover:text-(--ink) focus-visible:outline-2 focus-visible:outline-offset-2"
+            title="Star shapecrate on GitHub"
+            aria-label="Star shapecrate on GitHub (opens in a new tab)"
+            className="flex h-9 items-center justify-center gap-2 rounded-xl border border-(--line) bg-(--surface) px-2.5 sm:px-3 text-sm font-medium text-(--ink-2) shadow-2xs transition-colors hover:border-(--ink-3) hover:text-(--ink) focus-visible:outline-2 focus-visible:outline-offset-2"
           >
             <Image
               className="transition-colors dark:invert"
@@ -122,6 +141,15 @@ export default function Navbar() {
               height={18}
             />
             <span className="hidden sm:inline">GitHub</span>
+            <div className="flex items-center gap-1 border-l border-(--line) pl-2 text-xs font-semibold text-(--ink)">
+              <Star
+                className="size-3.5 fill-amber-400 text-amber-500 dark:fill-amber-300 dark:text-amber-400"
+                aria-hidden="true"
+              />
+              <span className="font-mono text-xs">
+                {stars !== null ? stars.toLocaleString() : "—"}
+              </span>
+            </div>
           </Link>
 
           {/* Mobile Menu Button */}

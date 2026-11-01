@@ -40,7 +40,7 @@ export default function BuildTogether() {
               className="group inline-flex items-center gap-2.5 rounded-xl bg-(--ink) px-5 py-3 text-sm font-semibold text-(--surface) shadow-sm transition hover:opacity-90 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2"
             >
               <Image
-                className="transition-colors dark:invert"
+                className="transition-colors brightness-0 invert dark:brightness-0 dark:invert-0"
                 src={ghicon}
                 alt=""
                 aria-hidden="true"
