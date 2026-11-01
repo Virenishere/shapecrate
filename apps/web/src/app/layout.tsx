@@ -98,12 +98,23 @@ export const metadata: Metadata = {
     title: "Shapecrate — Free HTML, CSS & Tailwind UI Components",
     description:
       "Free, copy-paste building blocks made with plain HTML and CSS for modern web apps. Zero dependencies, no npm installs.",
+    images: [
+      {
+        url: `${siteUrl}/opengraph-image`,
+        width: 1200,
+        height: 630,
+        alt: "Shapecrate — Free HTML, CSS & Tailwind UI Components",
+        type: "image/png",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Shapecrate — Free HTML, CSS & Tailwind UI Components",
     description:
       "Free, copy-paste building blocks made with plain HTML and CSS for modern web apps. Zero dependencies, no npm installs.",
+    images: [`${siteUrl}/twitter-image`],
+    creator: "@Virenishere",
   },
   robots: {
     index: true,

@@ -54,11 +54,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description,
       url: `/components/${id}`,
       type: "article",
+      images: [
+        {
+          url: `${siteUrl}/components/${id}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: `${title} — Shapecrate`,
+          type: "image/png",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: `${title} | Shapecrate`,
       description,
+      images: [`${siteUrl}/components/${id}/twitter-image`],
     },
   };
 }
