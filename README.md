@@ -26,4 +26,8 @@ This project was created using `bun init` in bun v1.3.10. [Bun](https://bun.com)
    <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=virenishere/shapecrate&type=date&legend=top-left" />
  </picture>
 </a>
-Add Open Graph Meta Tags
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
