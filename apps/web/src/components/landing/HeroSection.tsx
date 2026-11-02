@@ -6,7 +6,7 @@ import ghicon from "../../../public/github.svg";
 
 export default function HeroSection() {
   return (
-    <section className="mx-auto flex min-h-screen w-full max-w-7xl flex-col items-center justify-center gap-12 px-4 py-12 sm:px-6 lg:flex-row lg:items-center lg:gap-16 lg:px-12">
+    <section className="mx-auto flex w-full max-w-7xl flex-col items-center justify-center gap-12 px-4 py-12 sm:px-6 sm:py-16 lg:min-h-[calc(100vh-4rem)] lg:flex-row lg:items-center lg:gap-16 lg:px-12">
       {/* Left Column: Heading, description, and CTA actions */}
       <div className="flex w-full flex-1 flex-col items-center gap-6 text-center lg:items-start lg:text-left">
         <div className="inline-flex max-w-full items-center gap-2 rounded-full border border-(--line) bg-(--surface) py-1 pr-3.5 pl-1.5 text-xs sm:text-sm shadow-xs transition hover:border-(--ink-3)/40">

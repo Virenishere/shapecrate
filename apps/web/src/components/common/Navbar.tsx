@@ -27,16 +27,16 @@ export default function Navbar() {
   const [stars, setStars] = useState<number | null>(null);
   const mounted = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
-  // Fetch GitHub repository star count
+  // Fetch GitHub repository star count via edge-cached internal route
   useEffect(() => {
-    fetch("https://api.github.com/repos/virenishere/shapecrate")
+    fetch("/api/stars")
       .then((res) => {
-        if (!res.ok) throw new Error("Failed to fetch GitHub repo data");
+        if (!res.ok) throw new Error("Failed to fetch star count");
         return res.json();
       })
       .then((data) => {
-        if (typeof data?.stargazers_count === "number") {
-          setStars(data.stargazers_count);
+        if (typeof data?.stars === "number") {
+          setStars(data.stars);
         }
       })
       .catch(() => {
