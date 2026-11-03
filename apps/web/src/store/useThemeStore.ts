@@ -11,7 +11,7 @@ export interface ThemeState {
   toggleTheme: () => void;
 }
 
-const STORAGE_KEY = "shapecrate-theme";
+const STORAGE_KEY = "theme";
 
 /**
  * Safely reads the OS color scheme preference.
