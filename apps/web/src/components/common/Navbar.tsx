@@ -22,7 +22,7 @@ const getSnapshot = () => true;
 const getServerSnapshot = () => false;
 
 export default function Navbar() {
-  const { mode, changeMode } = useTheme();
+  const { resolvedTheme, toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [stars, setStars] = useState<number | null>(null);
   const mounted = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
@@ -106,9 +106,9 @@ export default function Navbar() {
           {/* Theme Toggle */}
           <button
             type="button"
-            onClick={() => changeMode(mode === "dark" ? "light" : "dark")}
+            onClick={toggleTheme}
             aria-label={
-              mounted && mode === "dark"
+              mounted && resolvedTheme === "dark"
                 ? "Switch to light mode"
                 : "Switch to dark mode"
             }
@@ -116,7 +116,7 @@ export default function Navbar() {
           >
             {!mounted ? (
               <span className="size-4" aria-hidden="true" />
-            ) : mode === "dark" ? (
+            ) : resolvedTheme === "dark" ? (
               <Sun className="size-4 text-(--lime)" aria-hidden="true" />
             ) : (
               <Moon className="size-4" aria-hidden="true" />

@@ -135,6 +135,27 @@ export const metadata: Metadata = {
   },
 };
 
+const THEME_INIT_SCRIPT = `(function() {
+  try {
+    var stored = localStorage.getItem('shapecrate-theme') || localStorage.getItem('theme');
+    var theme = 'system';
+    if (stored) {
+      try {
+        var parsed = JSON.parse(stored);
+        theme = parsed.state && parsed.state.theme ? parsed.state.theme : parsed;
+      } catch (err) {
+        theme = stored;
+      }
+    }
+    var isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  } catch (e) {}
+})();`;
+
 export default function RootLayout({
   children,
 }: {
@@ -143,8 +164,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${manrope.variable} ${dmMono.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+      </head>
       <body className="min-h-full flex flex-col bg-(--bg) font-sans text-(--ink) overflow-x-clip">
         <JsonLd data={siteWideJsonLd} />
         <Navbar />

@@ -1,49 +1,27 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import {
+  useThemeStore,
+  type ThemeMode,
+  type ResolvedTheme,
+} from "@/store/useThemeStore";
 
-type Mode = "light" | "dark" | "system";
+export type { ThemeMode, ResolvedTheme };
 
+/**
+ * Custom hook providing access to the centralized Zustand theme store.
+ * Subscribes to fine-grained selectors to optimize re-renders.
+ */
 export const useTheme = () => {
-  const [mode, setMode] = useState<Mode>(() => {
-    if (typeof window === "undefined") return "system";
-    return (localStorage.getItem("theme") as Mode) || "system";
-  });
+  const mode = useThemeStore((state) => state.theme);
+  const resolvedTheme = useThemeStore((state) => state.resolvedTheme);
+  const changeMode = useThemeStore((state) => state.setTheme);
+  const toggleTheme = useThemeStore((state) => state.toggleTheme);
 
-  const applyTheme = useCallback((isDark: boolean) => {
-    document.documentElement.classList.toggle("dark", isDark);
-  }, []);
-
-  const changeMode = useCallback((newMode: Mode) => {
-    setMode(newMode);
-    localStorage.setItem("theme", newMode);
-  }, []);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
-    const handleSystemThemeChange = (event: MediaQueryListEvent) => {
-      if (mode === "system") {
-        applyTheme(event.matches);
-      }
-    };
-
-    const applyCurrentTheme = () => {
-      if (mode === "system") {
-        applyTheme(mediaQuery.matches);
-      } else {
-        applyTheme(mode === "dark");
-      }
-    };
-
-    applyCurrentTheme();
-
-    mediaQuery.addEventListener("change", handleSystemThemeChange);
-
-    return () => {
-      mediaQuery.removeEventListener("change", handleSystemThemeChange);
-    };
-  }, [mode, applyTheme]);
-
-  return { mode, changeMode };
+  return {
+    mode,
+    resolvedTheme,
+    changeMode,
+    toggleTheme,
+  };
 };
