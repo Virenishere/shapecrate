@@ -137,7 +137,7 @@ export const metadata: Metadata = {
 
 const THEME_INIT_SCRIPT = `(function() {
   try {
-    var stored = localStorage.getItem('shapecrate-theme') || localStorage.getItem('theme');
+    var stored = localStorage.getItem('theme') || localStorage.getItem('theme');
     var theme = 'system';
     if (stored) {
       try {
