@@ -1,6 +1,7 @@
 import { ArrowRight, Check } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { SimpleButtonPreview } from "@shapecrate/components";
 
 import ghicon from "../../../public/github.svg";
 
@@ -118,25 +119,24 @@ export default function HeroSection() {
               <span className="select-none text-(--ink-3)">1</span> &nbsp; &lt;
               <span className="text-(--lime)">button</span>{" "}
               <span className="text-[#8584C2]">class=</span>
-              <span className="text-[#D2AB7A]">&quot;shape-button&quot;</span>&gt;
+              <span className="text-[#D2AB7A]">&quot;inline-flex items-center gap-2 rounded-xl bg-[#625de8] px-5 py-2.5 ...&quot;</span>&gt;
             </div>
-            <div className="ml-2 mt-3 text-white">
+            <div className="ml-2 mt-2 text-white">
               <span className="select-none text-(--ink-3)">2</span> &nbsp; &nbsp;
-              Start building
+              &lt;<span className="text-(--lime)">span</span>&gt;Start building&lt;/<span className="text-(--lime)">span</span>&gt;
             </div>
-            <div className="ml-2 mt-3 mb-4 text-white">
-              <span className="select-none text-(--ink-3)">3</span> &nbsp; &lt;/
+            <div className="ml-2 mt-2 text-white">
+              <span className="select-none text-(--ink-3)">3</span> &nbsp; &nbsp;
+              &lt;<span className="text-(--lime)">svg</span> <span className="text-[#8584C2]">class=</span><span className="text-[#D2AB7A]">&quot;size-4&quot;</span> ... /&gt;
+            </div>
+            <div className="ml-2 mt-2 mb-4 text-white">
+              <span className="select-none text-(--ink-3)">4</span> &nbsp; &lt;/
               <span className="text-(--lime)">button</span>&gt;
             </div>
 
-            {/* Clean solid component preview container without dotted background */}
+            {/* Clean solid component preview container */}
             <div className="flex h-28 sm:h-32 items-center justify-center rounded-2xl bg-(--surface-2) transition-colors">
-              <button
-                type="button"
-                className="flex flex-row items-center gap-2 rounded-xl bg-(--accent) px-5 py-2.5 text-sm font-medium text-white shadow-md shadow-(--accent)/25 transition hover:opacity-90 active:scale-[0.98]"
-              >
-                Start building <ArrowRight size={14} />
-              </button>
+              <SimpleButtonPreview />
             </div>
           </div>
         </div>
