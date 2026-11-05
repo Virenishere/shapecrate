@@ -4,6 +4,7 @@
 node_modules
 
 # output
+.next/
 out
 dist
 *.tgz
