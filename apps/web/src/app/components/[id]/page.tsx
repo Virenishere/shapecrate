@@ -12,14 +12,19 @@ interface PageProps {
 }
 
 export function generateStaticParams() {
-  return componentsRegistry.map((component) => ({
+  const ids = componentsRegistry.map((component) => ({
     id: component.id,
   }));
+  if (!ids.some((c) => c.id === "popup-button")) {
+    ids.push({ id: "popup-button" });
+  }
+  return ids;
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { id } = await params;
-  const item = componentsRegistry.find((c) => c.id === id);
+  const resolvedId = id === "popup-button" ? "popover-button" : id;
+  const item = componentsRegistry.find((c) => c.id === resolvedId || c.id === id);
 
   if (!item) {
     return {
@@ -47,16 +52,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       "open source component",
     ],
     alternates: {
-      canonical: `/components/${id}`,
+      canonical: `/components/${resolvedId}`,
     },
     openGraph: {
       title: `${title} | Shapecrate`,
       description,
-      url: `/components/${id}`,
+      url: `/components/${resolvedId}`,
       type: "article",
       images: [
         {
-          url: `${siteUrl}/components/${id}/opengraph-image`,
+          url: `${siteUrl}/components/${resolvedId}/opengraph-image`,
           width: 1200,
           height: 630,
           alt: `${title} — Shapecrate`,
@@ -68,14 +73,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: "summary_large_image",
       title: `${title} | Shapecrate`,
       description,
-      images: [`${siteUrl}/components/${id}/twitter-image`],
+      images: [`${siteUrl}/components/${resolvedId}/twitter-image`],
     },
   };
 }
 
 export default async function ComponentPage({ params }: PageProps) {
   const { id } = await params;
-  const item = componentsRegistry.find((c) => c.id === id);
+  const resolvedId = id === "popup-button" ? "popover-button" : id;
+  const item = componentsRegistry.find((c) => c.id === resolvedId || c.id === id);
 
   if (!item) {
     notFound();
@@ -132,7 +138,7 @@ export default async function ComponentPage({ params }: PageProps) {
   return (
     <>
       <JsonLd data={jsonLd} />
-      <ComponentDetail id={id} />
+      <ComponentDetail id={resolvedId} item={item} />
     </>
   );
 }

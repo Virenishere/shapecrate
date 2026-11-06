@@ -25,11 +25,17 @@ interface ComponentDetailProps {
 }
 
 export function ComponentDetail({ id, item: propItem, onBack }: ComponentDetailProps) {
-  const item = propItem || componentsRegistry.find((c) => c.id === id);
+  const item =
+    propItem ||
+    componentsRegistry.find((c) => c.id === id) ||
+    (id === "popup-button"
+      ? componentsRegistry.find((c) => c.id === "popover-button")
+      : undefined);
 
   const isButton = item?.category === "buttons";
+  const isPopover = item?.id === "popover-button" || item?.id === "popup-button";
   const defaultColor =
-    item?.id === "popup-button"
+    isPopover
       ? "#171918"
       : isButton
       ? "#625de8"
@@ -70,9 +76,9 @@ export function ComponentDetail({ id, item: propItem, onBack }: ComponentDetailP
 
   // Generate dynamic customized CSS based on component type and playground controls
   const customizedCss =
-    item.id === "popup-button"
+    isPopover
       ? `/* Wrapper */
-.popup-btn-wrapper {
+.popover-btn-wrapper {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -80,26 +86,26 @@ export function ComponentDetail({ id, item: propItem, onBack }: ComponentDetailP
 }
 
 /* Floating Tooltip Card */
-.popup-tooltip {
+.popover-tooltip {
   position: absolute;
   bottom: calc(100% + 10px);
   left: 50%;
-  transform: translateX(-50%) translateY(4px);
+  transform: translateX(-50%) translateY(6px) scale(0.96);
   opacity: 0;
   pointer-events: none;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 50;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
-  z-index: 20;
 }
 
-.popup-btn-wrapper:hover .popup-tooltip,
-.popup-btn-wrapper:focus-within .popup-tooltip {
+.popover-btn-wrapper:hover .popover-tooltip,
+.popover-btn-wrapper:focus-within .popover-tooltip {
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
+  transform: translateX(-50%) translateY(0) scale(1);
 }
 
-.popup-card {
-  display: flex;
+.popover-card {
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   background-color: #171918;
@@ -111,7 +117,23 @@ export function ComponentDetail({ id, item: propItem, onBack }: ComponentDetailP
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
 }
 
-.popup-arrow {
+.popover-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background-color: #10b981;
+}
+
+.popover-badge {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.popover-arrow {
   position: absolute;
   top: 100%;
   left: 50%;
@@ -124,7 +146,7 @@ export function ComponentDetail({ id, item: propItem, onBack }: ComponentDetailP
 }
 
 /* Button */
-.popup-button {
+.popover-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -141,12 +163,12 @@ export function ComponentDetail({ id, item: propItem, onBack }: ComponentDetailP
   transition: all 0.2s ease;
 }
 
-.popup-button:hover {
+.popover-button:hover {
   filter: brightness(1.08);
   box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.24);
 }
 
-.popup-button:active {
+.popover-button:active {
   transform: scale(0.98);
 }`
       : isButton
@@ -200,34 +222,33 @@ export function ComponentDetail({ id, item: propItem, onBack }: ComponentDetailP
 }`;
 
   const customizedHtml =
-    item.id === "popup-button"
-      ? `<!-- HTML + Tailwind CSS (with inline CSS fallback) -->
-<div class="group relative inline-flex items-center justify-center">
-  <!-- Floating Hover Popup Card -->
+    isPopover
+      ? `<!-- HTML + Tailwind CSS (with clean CSS fallback) -->
+<div class="popover-btn-wrapper group relative inline-flex items-center justify-center">
+  <!-- Floating Hover Popover -->
   <div
     role="tooltip"
-    class="pointer-events-none absolute bottom-full left-1/2 mb-2.5 -translate-x-1/2 translate-y-1 opacity-0 transition-all duration-200 ease-out group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100"
-    style="position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); margin-bottom: 10px; pointer-events: none; opacity: 0; transition: all 0.2s ease;"
+    id="popover-tooltip"
+    class="popover-tooltip pointer-events-none absolute bottom-full left-1/2 z-50 mb-2.5 -translate-x-1/2 translate-y-1.5 scale-95 opacity-0 transition-all duration-200 ease-out group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:scale-100 group-focus-within:opacity-100"
   >
     <div
-      class="flex items-center gap-2 whitespace-nowrap rounded-xl bg-[#171918] px-3.5 py-1.5 text-xs font-medium text-white shadow-xl shadow-black/20 dark:bg-white dark:text-[#171918]"
-      style="display: flex; align-items: center; gap: 8px; white-space: nowrap; border-radius: 12px; background-color: #171918; padding: 6px 14px; font-size: 12px; font-weight: 500; color: #ffffff; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);"
+      class="popover-card flex items-center gap-2 whitespace-nowrap rounded-xl bg-[#171918] px-3.5 py-1.5 text-xs font-medium text-white shadow-xl shadow-black/20 dark:bg-white dark:text-[#171918]"
     >
-      <span class="size-2 rounded-full bg-[#10b981]" style="width: 8px; height: 8px; border-radius: 9999px; background-color: #10b981;"></span>
+      <span class="popover-dot size-2 rounded-full bg-[#10b981] animate-pulse"></span>
       <span>Instant preview ready</span>
-      <span class="rounded bg-white/20 px-1.5 py-0.5 font-mono text-[10px] text-white/90" style="border-radius: 4px; background-color: rgba(255, 255, 255, 0.2); padding: 2px 6px; font-size: 10px;">⌘P</span>
+      <span class="popover-badge rounded bg-white/20 px-1.5 py-0.5 font-mono text-[10px] text-white/90 dark:bg-black/10 dark:text-black/80">⌘P</span>
     </div>
     <div
-      class="absolute left-1/2 top-full -translate-x-1/2 -translate-y-0.5 border-4 border-transparent border-t-[#171918] dark:border-t-white"
-      style="position: absolute; left: 50%; top: 100%; transform: translateX(-50%) translateY(-2px); width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #171918;"
+      class="popover-arrow absolute left-1/2 top-full -translate-x-1/2 -translate-y-0.5 border-4 border-transparent border-t-[#171918] dark:border-t-white"
     ></div>
   </div>
 
   <!-- Action Button -->
   <button
     type="button"
-    class="inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-all hover:brightness-105 hover:shadow-lg active:scale-[0.98]"
-    style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: ${cornerRadius}px; background-color: ${accentColor}; padding: 10px 20px; font-size: 14px; font-weight: 600; color: #ffffff; border: none; cursor: pointer; box-shadow: 0 4px 14px 0 color-mix(in srgb, ${accentColor} 25%, transparent); transition: all 0.2s ease;"
+    aria-describedby="popover-tooltip"
+    class="popover-button inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-all hover:brightness-105 hover:shadow-lg active:scale-[0.98]"
+    style="border-radius: ${cornerRadius}px; background-color: ${accentColor}; box-shadow: 0 4px 14px 0 color-mix(in srgb, ${accentColor} 25%, transparent);"
   >
     <svg
       class="size-4"
@@ -404,12 +425,13 @@ export function ComponentDetail({ id, item: propItem, onBack }: ComponentDetailP
           borderRadius: `${cornerRadius}px`,
         }}
       >
-        {item.id === "popup-button" ? (
+        {isPopover ? (
           <div className="group relative inline-flex items-center justify-center">
-            {/* Floating Hover Popup */}
+            {/* Floating Hover Popover */}
             <div
               role="tooltip"
-              className="pointer-events-none absolute bottom-full left-1/2 mb-2.5 -translate-x-1/2 translate-y-1 opacity-0 transition-all duration-200 ease-out group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100"
+              id="popover-tooltip"
+              className="pointer-events-none absolute bottom-full left-1/2 z-50 mb-2.5 -translate-x-1/2 translate-y-1.5 scale-95 opacity-0 transition-all duration-200 ease-out group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:scale-100 group-focus-within:opacity-100"
             >
               <div className="flex items-center gap-2 whitespace-nowrap rounded-xl bg-[#171918] px-3.5 py-1.5 text-xs font-medium text-white shadow-xl shadow-black/20 dark:bg-white dark:text-[#171918]">
                 <span className="size-2 rounded-full bg-[#10b981] animate-pulse" />
@@ -424,7 +446,8 @@ export function ComponentDetail({ id, item: propItem, onBack }: ComponentDetailP
             {/* Action Button */}
             <button
               type="button"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-all hover:brightness-105 hover:shadow-lg active:scale-[0.98]"
+              aria-describedby="popover-tooltip"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-all hover:brightness-105 hover:shadow-lg active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2"
               style={{
                 backgroundColor: accentColor,
                 borderRadius: `${cornerRadius}px`,

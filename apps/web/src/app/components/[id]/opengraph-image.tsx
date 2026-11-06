@@ -10,9 +10,13 @@ export const size = {
 export const contentType = "image/png";
 
 export function generateStaticParams() {
-  return componentsRegistry.map((component) => ({
+  const ids = componentsRegistry.map((component) => ({
     id: component.id,
   }));
+  if (!ids.some((c) => c.id === "popup-button")) {
+    ids.push({ id: "popup-button" });
+  }
+  return ids;
 }
 
 export default async function Image({
@@ -21,7 +25,8 @@ export default async function Image({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const item = componentsRegistry.find((c) => c.id === id);
+  const resolvedId = id === "popup-button" ? "popover-button" : id;
+  const item = componentsRegistry.find((c) => c.id === resolvedId || c.id === id);
 
   const title = item ? item.title : "UI Component";
   const category = item ? item.category.toUpperCase() : "COMPONENT";
