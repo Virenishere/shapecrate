@@ -138,7 +138,7 @@ export default async function ComponentPage({ params }: PageProps) {
   return (
     <>
       <JsonLd data={jsonLd} />
-      <ComponentDetail id={resolvedId} item={item} />
+      <ComponentDetail id={resolvedId} />
     </>
   );
 }
