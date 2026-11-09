@@ -208,16 +208,32 @@ export default async function Image({
                   display: "flex",
                   alignItems: "center",
                   gap: "10px",
-                  backgroundColor: "#625de8",
+                  backgroundColor:
+                    item?.id === "popover-button" || item?.id === "shimmer-button"
+                      ? "#171918"
+                      : "#625de8",
                   color: "#ffffff",
                   padding: "14px 28px",
                   borderRadius: "14px",
                   fontSize: "17px",
                   fontWeight: 600,
-                  boxShadow: "0 10px 25px rgba(98, 93, 232, 0.45)",
+                  boxShadow:
+                    item?.id === "popover-button" || item?.id === "shimmer-button"
+                      ? "0 10px 25px rgba(0, 0, 0, 0.45)"
+                      : "0 10px 25px rgba(98, 93, 232, 0.45)",
+                  border:
+                    item?.id === "shimmer-button"
+                      ? "1px solid rgba(255, 255, 255, 0.2)"
+                      : "none",
                 }}
               >
-                <span>Start building</span>
+                <span>
+                  {item?.id === "popover-button"
+                    ? "Deploy project"
+                    : item?.id === "shimmer-button"
+                    ? "Explore features"
+                    : "Start building"}
+                </span>
                 <span style={{ fontSize: "18px" }}>→</span>
               </div>
             ) : null}

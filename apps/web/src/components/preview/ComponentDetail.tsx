@@ -34,8 +34,9 @@ export function ComponentDetail({ id, item: propItem, onBack }: ComponentDetailP
 
   const isButton = item?.category === "buttons";
   const isPopover = item?.id === "popover-button" || item?.id === "popup-button";
+  const isShimmer = item?.id === "shimmer-button";
   const defaultColor =
-    isPopover
+    isPopover || isShimmer
       ? "#171918"
       : isButton
       ? "#625de8"
@@ -171,6 +172,60 @@ export function ComponentDetail({ id, item: propItem, onBack }: ComponentDetailP
 .popover-button:active {
   transform: scale(0.98);
 }`
+      : isShimmer
+      ? `/* Shimmer Button */
+.shimmer-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  overflow: hidden;
+  border-radius: ${cornerRadius}px;
+  background-color: ${accentColor};
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 16px -2px color-mix(in srgb, ${accentColor} 30%, transparent);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.shimmer-btn:hover {
+  filter: brightness(1.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 24px -2px color-mix(in srgb, ${accentColor} 45%, transparent);
+  transform: translateY(-1px);
+}
+
+.shimmer-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.shimmer-sweep {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 80%
+  );
+  animation: shimmer-sweep 3s infinite ease-in-out;
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  50%, 100% {
+    transform: translateX(100%);
+  }
+}`
       : isButton
       ? `.${item.id} {
   display: inline-flex;
@@ -269,6 +324,54 @@ export function ComponentDetail({ id, item: propItem, onBack }: ComponentDetailP
     <span>Deploy project</span>
   </button>
 </div>`
+      : isShimmer
+      ? `<!-- HTML + Tailwind CSS -->
+<button
+  type="button"
+  class="shimmer-btn group relative inline-flex items-center justify-center gap-2 overflow-hidden px-5 py-2.5 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:brightness-110 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2"
+  style="border-radius: ${cornerRadius}px; background-color: ${accentColor}; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 4px 16px -2px color-mix(in srgb, ${accentColor} 30%, transparent);"
+>
+  <!-- Animated Sweeping Shimmer Sheen -->
+  <span
+    aria-hidden="true"
+    class="shimmer-sweep pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent"
+    style="animation: shimmer-sweep 3s infinite ease-in-out;"
+  ></span>
+
+  <!-- Sparkle Icon -->
+  <svg
+    class="size-4 text-[#c7f36b] transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z" />
+  </svg>
+
+  <span>Explore features</span>
+
+  <!-- Trailing Arrow -->
+  <svg
+    class="size-4 text-white/70 transition-transform duration-300 group-hover:translate-x-0.5"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M5 12h14M12 5l7 7-7 7" />
+  </svg>
+</button>`
       : isButton
       ? `<button
   type="button"
@@ -473,6 +576,58 @@ export function ComponentDetail({ id, item: propItem, onBack }: ComponentDetailP
               <span>Deploy project</span>
             </button>
           </div>
+        ) : isShimmer ? (
+          <button
+            type="button"
+            className="group relative inline-flex items-center justify-center gap-2 overflow-hidden px-5 py-2.5 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:brightness-110 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2"
+            style={{
+              backgroundColor: accentColor,
+              borderRadius: `${cornerRadius}px`,
+              border: "1px solid rgba(255, 255, 255, 0.15)",
+              boxShadow: `0 4px 16px -2px color-mix(in srgb, ${accentColor} 30%, transparent)`,
+            }}
+          >
+            {/* Animated Sweeping Shimmer Sheen */}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent"
+              style={{ animation: "shimmer-sweep 3s infinite ease-in-out" }}
+            />
+
+            {/* Sparkle Icon */}
+            <svg
+              className="size-4 text-(--lime) transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110"
+              width={16}
+              height={16}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z" />
+            </svg>
+
+            <span>Explore features</span>
+
+            {/* Trailing Arrow */}
+            <svg
+              className="size-4 text-white/70 transition-transform duration-300 group-hover:translate-x-0.5"
+              width={16}
+              height={16}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </button>
         ) : isButton ? (
           <button
             type="button"

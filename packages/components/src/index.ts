@@ -12,17 +12,24 @@ export {
   PopupButtonPreview,
   PopupButton,
 } from "./elements/buttons/popup-button";
+export {
+  shimmerButton,
+  ShimmerButtonPreview,
+  ShimmerButton,
+} from "./elements/buttons/shimmer-button";
 
 import { auroraGradient } from "./elements/gradients/aurora-gradient";
 import { radialSpotlight } from "./elements/gradients/radial-spotlight";
 import { softGrid } from "./elements/backgrounds/soft-grid";
 import { simpleButton } from "./elements/buttons/simple-button";
 import { popoverButton } from "./elements/buttons/popup-button";
+import { shimmerButton } from "./elements/buttons/shimmer-button";
 import type { ComponentItem } from "./types";
 
 export const componentsRegistry: ComponentItem[] = [
   simpleButton,
   popoverButton,
+  shimmerButton,
   // auroraGradient,
   // radialSpotlight,
   // softGrid,

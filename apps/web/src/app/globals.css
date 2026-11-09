@@ -92,3 +92,12 @@ body {
     transparent 70%
   );
 }
+
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  50%, 100% {
+    transform: translateX(100%);
+  }
+}
