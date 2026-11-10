@@ -4,26 +4,35 @@ import Landing from "@/components/landing/Landing";
 export const metadata: Metadata = {
   title: {
     absolute:
-      "Shapecrate — Free HTML, CSS & Tailwind UI Components | Copy & Paste",
+      "Shapecrate — Free Copy-Paste HTML, CSS & Tailwind UI Components",
   },
   description:
-    "Free, open-source UI building blocks crafted with plain HTML, modern CSS, and Tailwind. Zero dependencies, no npm installs, 100% customizable.",
+    "Shapecrate is a free, open-source library of modern HTML, CSS, and Tailwind UI components. Zero dependencies, no npm installs, 100% copy-paste ready.",
   keywords: [
+    "shapecrate",
+    "shape crate",
+    "shapecrate ui",
+    "shapecrate components",
+    "shapecrate github",
+    "shapecrate free ui components",
+    "shapecrate ui library",
     "copy paste UI components",
     "Tailwind CSS components",
-    "HTML CSS building blocks",
+    "free HTML CSS buttons",
+    "zero dependency UI library",
+    "no npm UI components",
     "open source UI library",
     "modern web components",
-    "free CSS buttons",
-    "CSS gradient generator",
+    "CSS button playground",
+    "vanilla CSS components",
   ],
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Shapecrate — Free HTML, CSS & Tailwind UI Components",
+    title: "Shapecrate — Free Copy-Paste HTML, CSS & Tailwind UI Components",
     description:
-      "Free, open-source UI building blocks crafted with plain HTML, modern CSS, and Tailwind. Zero dependencies, no npm installs, 100% customizable.",
+      "Shapecrate is a free, open-source library of modern HTML, CSS, and Tailwind UI components. Zero dependencies, no npm installs, 100% copy-paste ready.",
     url: "/",
   },
 };

@@ -43,6 +43,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title,
     description,
     keywords: [
+      `shapecrate ${item.title.toLowerCase()}`,
+      `shapecrate ${item.category}`,
+      "shapecrate",
+      "shape crate",
+      "shapecrate free ui components",
       item.title,
       item.category,
       ...item.tags,
@@ -50,6 +55,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       "CSS UI block",
       "Tailwind component",
       "open source component",
+      "zero dependency CSS",
     ],
     alternates: {
       canonical: `/components/${resolvedId}`,

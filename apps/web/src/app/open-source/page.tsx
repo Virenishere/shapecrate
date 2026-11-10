@@ -33,7 +33,11 @@ export const metadata: Metadata = {
   description:
     "Shapecrate is 100% open source under the MIT license. Read our roadmap, propose features, and contribute your own components on GitHub.",
   keywords: [
-    "open source UI",
+    "shapecrate open source",
+    "shapecrate github",
+    "shapecrate",
+    "shape crate",
+    "open source UI library",
     "MIT license UI library",
     "contribute to open source",
     "GitHub UI components",

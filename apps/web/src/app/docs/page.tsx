@@ -46,6 +46,9 @@ export const metadata: Metadata = {
     "Learn how to integrate Shapecrate components into React, Next.js, Vue, or static HTML. Zero build step, responsive mobile-first styling, and pure web standards.",
   keywords: [
     "Shapecrate documentation",
+    "shapecrate guide",
+    "shapecrate",
+    "shape crate",
     "how to use CSS components",
     "Tailwind integration guide",
     "HTML UI components guide",

@@ -29,11 +29,13 @@ export default function HeroSection() {
             without the <br className="hidden sm:block" />
             busywork.
           </span>
+          <span className="sr-only">
+            {" "}— Shapecrate: Free Open-Source HTML, CSS &amp; Tailwind UI Components
+          </span>
         </h1>
 
         <p className="max-w-xl text-base text-balance text-(--ink-2) sm:text-lg md:text-xl leading-relaxed">
-          Free, open-source CSS and HTML components you can preview, copy, and make
-          your own. No installs. No lock-in.
+          Shapecrate is a free, open-source library of modern HTML, CSS, and Tailwind UI components you can preview, customize in the playground, and copy with zero dependencies.
         </p>
 
         <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
