@@ -8,6 +8,15 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
+        disallow: [
+          "/api/",
+          "/manifest.webmanifest",
+          "/*?*",
+          "/opengraph-image*",
+          "/twitter-image*",
+          "/*/opengraph-image*",
+          "/*/twitter-image*",
+        ],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

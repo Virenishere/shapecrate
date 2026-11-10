@@ -54,6 +54,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     alternates: {
       canonical: `/components/${resolvedId}`,
     },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     openGraph: {
       title: `${title} | Shapecrate`,
       description,
@@ -109,7 +120,7 @@ export default async function ComponentPage({ params }: PageProps) {
             "@type": "ListItem",
             position: 3,
             name: item.title,
-            item: `${siteUrl}/components/${id}`,
+            item: `${siteUrl}/components/${resolvedId}`,
           },
         ],
       },
@@ -125,7 +136,7 @@ export default async function ComponentPage({ params }: PageProps) {
           priceCurrency: "USD",
         },
         license: "https://spdx.org/licenses/MIT",
-        url: `${siteUrl}/components/${id}`,
+        url: `${siteUrl}/components/${resolvedId}`,
         author: {
           "@type": "Organization",
           name: "Shapecrate",

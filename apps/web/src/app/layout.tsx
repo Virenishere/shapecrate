@@ -35,14 +35,6 @@ const siteWideJsonLd = {
       name: "Shapecrate",
       description:
         "Free, copy-paste building blocks made with plain HTML and CSS for modern web apps.",
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: `${siteUrl}/components?q={search_term_string}`,
-        },
-        "query-input": "required name=search_term_string",
-      },
     },
     {
       "@type": "Organization",

@@ -37,7 +37,7 @@ export default function Footer() {
           </div>
 
           {/* Links Columns */}
-          <div className="grid grid-cols-2 gap-x-12 gap-y-6 sm:gap-x-16 text-sm">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-10 gap-y-6 text-sm">
             {/* Column 1: Explore */}
             <div className="flex flex-col gap-3">
               <span className="font-semibold text-(--ink)">Explore</span>
@@ -47,7 +47,7 @@ export default function Footer() {
                     href="/components"
                     className="text-(--ink-2) transition-colors hover:text-(--ink)"
                   >
-                    Components
+                    All Components
                   </Link>
                 </li>
                 <li>
@@ -58,21 +58,60 @@ export default function Footer() {
                     Documentation
                   </Link>
                 </li>
-              </ul>
-            </div>
-
-            {/* Column 2: Project / Community */}
-            <div className="flex flex-col gap-3">
-              <span className="font-semibold text-(--ink)">Project</span>
-              <ul className="flex flex-col gap-2.5">
                 <li>
                   <Link
                     href="/open-source"
                     className="text-(--ink-2) transition-colors hover:text-(--ink)"
                   >
-                    Open source
+                    Open Source
                   </Link>
                 </li>
+              </ul>
+            </div>
+
+            {/* Column 2: Popular Components */}
+            <div className="flex flex-col gap-3">
+              <span className="font-semibold text-(--ink)">Components</span>
+              <ul className="flex flex-col gap-2.5">
+                <li>
+                  <Link
+                    href="/components/simple-button"
+                    className="text-(--ink-2) transition-colors hover:text-(--ink)"
+                  >
+                    Simple Button
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/components/glow-button"
+                    className="text-(--ink-2) transition-colors hover:text-(--ink)"
+                  >
+                    Glow Button
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/components/shimmer-button"
+                    className="text-(--ink-2) transition-colors hover:text-(--ink)"
+                  >
+                    Shimmer Button
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/components/popover-button"
+                    className="text-(--ink-2) transition-colors hover:text-(--ink)"
+                  >
+                    Popover Button
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 3: Project / Community */}
+            <div className="flex flex-col gap-3">
+              <span className="font-semibold text-(--ink)">Community</span>
+              <ul className="flex flex-col gap-2.5">
                 <li>
                   <Link
                     href="https://github.com/Virenishere/shapecrate"
