@@ -17,6 +17,11 @@ export {
   ShimmerButtonPreview,
   ShimmerButton,
 } from "./elements/buttons/shimmer-button";
+export {
+  glowButton,
+  GlowButtonPreview,
+  GlowButton,
+} from "./elements/buttons/glow-button";
 
 import { auroraGradient } from "./elements/gradients/aurora-gradient";
 import { radialSpotlight } from "./elements/gradients/radial-spotlight";
@@ -24,12 +29,14 @@ import { softGrid } from "./elements/backgrounds/soft-grid";
 import { simpleButton } from "./elements/buttons/simple-button";
 import { popoverButton } from "./elements/buttons/popup-button";
 import { shimmerButton } from "./elements/buttons/shimmer-button";
+import { glowButton } from "./elements/buttons/glow-button";
 import type { ComponentItem } from "./types";
 
 export const componentsRegistry: ComponentItem[] = [
   simpleButton,
   popoverButton,
   shimmerButton,
+  glowButton,
   // auroraGradient,
   // radialSpotlight,
   // softGrid,

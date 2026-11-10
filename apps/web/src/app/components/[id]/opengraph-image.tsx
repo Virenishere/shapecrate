@@ -209,7 +209,7 @@ export default async function Image({
                   alignItems: "center",
                   gap: "10px",
                   backgroundColor:
-                    item?.id === "popover-button" || item?.id === "shimmer-button"
+                    item?.id === "popover-button" || item?.id === "shimmer-button" || item?.id === "glow-button"
                       ? "#171918"
                       : "#625de8",
                   color: "#ffffff",
@@ -218,11 +218,13 @@ export default async function Image({
                   fontSize: "17px",
                   fontWeight: 600,
                   boxShadow:
-                    item?.id === "popover-button" || item?.id === "shimmer-button"
+                    item?.id === "glow-button"
+                      ? "0 0 30px rgba(98, 93, 232, 0.65), 0 10px 25px rgba(0, 0, 0, 0.45)"
+                      : item?.id === "popover-button" || item?.id === "shimmer-button"
                       ? "0 10px 25px rgba(0, 0, 0, 0.45)"
                       : "0 10px 25px rgba(98, 93, 232, 0.45)",
                   border:
-                    item?.id === "shimmer-button"
+                    item?.id === "shimmer-button" || item?.id === "glow-button"
                       ? "1px solid rgba(255, 255, 255, 0.2)"
                       : "none",
                 }}
@@ -232,6 +234,8 @@ export default async function Image({
                     ? "Deploy project"
                     : item?.id === "shimmer-button"
                     ? "Explore features"
+                    : item?.id === "glow-button"
+                    ? "Get started now"
                     : "Start building"}
                 </span>
                 <span style={{ fontSize: "18px" }}>→</span>
