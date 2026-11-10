@@ -3,6 +3,7 @@ import HeroSection from "./HeroSection";
 import FeatureComponent from "./FeatureComponent";
 import HowItWorks from "./HowItWorks";
 import OpenSourceSection from "./OpenSourceSection";
+import FaqSection from "./FaqSection";
 
 export default function Landing() {
   return (
@@ -11,6 +12,7 @@ export default function Landing() {
       <FeatureComponent />
       <HowItWorks />
       <OpenSourceSection />
+      <FaqSection />
     </div>
   );
 }

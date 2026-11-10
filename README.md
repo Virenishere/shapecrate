@@ -1,18 +1,20 @@
 <div align="center">
 
-# shapecrate
+# Shapecrate — Free HTML, CSS & Tailwind UI Components
 
 <p align="center">
   <strong>Beautiful UI, without the busywork.</strong><br>
-  Free, open-source building blocks crafted with plain HTML, modern CSS, and Tailwind.<br>
-  Zero dependencies • No npm installs • 100% customizable
+  Free, open-source UI building blocks crafted with plain HTML, modern CSS, and Tailwind CSS.<br>
+  Zero dependencies • No npm installs • 100% copy & paste ready
 </p>
 
 <p align="center">
-  <a href="https://shapecrate.vercel.app"><strong>Explore Components »</strong></a>
+  <a href="https://shapecrate.vercel.app"><strong>🌐 Visit shapecrate.vercel.app »</strong></a>
   <br />
   <br />
-  <a href="https://shapecrate.vercel.app">Live Demo</a>
+  <a href="https://shapecrate.vercel.app/components">Explore Components</a>
+  ·
+  <a href="https://shapecrate.vercel.app/docs">Documentation</a>
   ·
   <a href="https://github.com/virenishere/shapecrate/issues">Report Bug</a>
   ·
@@ -26,6 +28,19 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 
 </div>
+
+---
+
+## 🎨 Featured Components
+
+Preview and copy clean HTML and CSS directly on [shapecrate.vercel.app](https://shapecrate.vercel.app):
+
+| Component | Category | Tech | Live Demo |
+| :--- | :--- | :--- | :--- |
+| **Simple Button** | Buttons | HTML • CSS • Tailwind | [Preview & Playground](https://shapecrate.vercel.app/components/simple-button) |
+| **Glow Button** | Buttons | HTML • CSS • Tailwind | [Preview & Playground](https://shapecrate.vercel.app/components/glow-button) |
+| **Shimmer Button** | Buttons | HTML • CSS • Tailwind | [Preview & Playground](https://shapecrate.vercel.app/components/shimmer-button) |
+| **Popover Button** | Buttons | HTML • CSS • Tailwind | [Preview & Playground](https://shapecrate.vercel.app/components/popover-button) |
 
 ---
 
