@@ -22,6 +22,11 @@ export {
   GlowButtonPreview,
   GlowButton,
 } from "./elements/buttons/glow-button";
+export {
+  hoverButton,
+  HoverButtonPreview,
+  HoverButton,
+} from "./elements/buttons/hover-button";
 
 import { auroraGradient } from "./elements/gradients/aurora-gradient";
 import { radialSpotlight } from "./elements/gradients/radial-spotlight";
@@ -30,6 +35,7 @@ import { simpleButton } from "./elements/buttons/simple-button";
 import { popoverButton } from "./elements/buttons/popup-button";
 import { shimmerButton } from "./elements/buttons/shimmer-button";
 import { glowButton } from "./elements/buttons/glow-button";
+import { hoverButton } from "./elements/buttons/hover-button";
 import type { ComponentItem } from "./types";
 
 export const componentsRegistry: ComponentItem[] = [
@@ -37,6 +43,7 @@ export const componentsRegistry: ComponentItem[] = [
   popoverButton,
   shimmerButton,
   glowButton,
+  hoverButton,
   // auroraGradient,
   // radialSpotlight,
   // softGrid,

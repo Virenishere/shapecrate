@@ -36,9 +36,12 @@ export function ComponentDetail({ id, item: propItem, onBack }: ComponentDetailP
   const isPopover = item?.id === "popover-button" || item?.id === "popup-button";
   const isShimmer = item?.id === "shimmer-button";
   const isGlow = item?.id === "glow-button";
+  const isHover = item?.id === "hover-button";
   const defaultColor =
     isPopover || isShimmer
       ? "#171918"
+      : isHover
+      ? "linear-gradient(90deg, #625de8, #8584c2)"
       : isGlow || isButton
       ? "#625de8"
       : item?.id === "radial-spotlight"
@@ -276,6 +279,76 @@ export function ComponentDetail({ id, item: propItem, onBack }: ComponentDetailP
 
 .glow-btn:active {
   transform: scale(0.98);
+}
+`
+      : isHover
+      ? `/* Hover Button */
+.hover-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  overflow: hidden;
+  border-radius: ${cornerRadius}px;
+  background-color: #171918;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-btn:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 24px -2px rgba(98, 93, 232, 0.35);
+}
+
+.hover-btn:active {
+  transform: scale(0.98);
+}
+
+.hover-btn-fill {
+  position: absolute;
+  inset: 0;
+  background: ${accentColor};
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  border-radius: ${cornerRadius}px;
+}
+
+.hover-btn:hover .hover-btn-fill {
+  transform: translateY(0);
+}
+
+.hover-btn-content {
+  position: relative;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hover-btn-icon-leading {
+  transition: transform 0.3s ease;
+}
+
+.hover-btn:hover .hover-btn-icon-leading {
+  transform: scale(1.1);
+}
+
+.hover-btn-icon-trailing {
+  transition: transform 0.3s ease, color 0.3s ease;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.hover-btn:hover .hover-btn-icon-trailing {
+  transform: translateX(4px);
+  color: #ffffff;
 }`
       : isButton
       ? `.${item.id} {
@@ -474,6 +547,51 @@ export function ComponentDetail({ id, item: propItem, onBack }: ComponentDetailP
     </svg>
   </button>
 </div>`
+      : isHover
+      ? `<!-- HTML + Tailwind CSS -->
+<button
+  type="button"
+  class="hover-btn group relative inline-flex items-center justify-center gap-2.5 overflow-hidden bg-[#171918] px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:border-white/30 hover:shadow-lg active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#625de8] dark:bg-[#111312]"
+  style="border-radius: ${cornerRadius}px; border: 1px solid rgba(255, 255, 255, 0.15);"
+>
+  <span
+    aria-hidden="true"
+    class="hover-btn-fill pointer-events-none absolute inset-0 translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0"
+    style="border-radius: ${cornerRadius}px; background: ${accentColor};"
+  ></span>
+  <span class="hover-btn-content relative z-10 flex items-center gap-2.5">
+    <svg
+      class="hover-btn-icon-leading size-4 text-[#c7f36b] transition-transform duration-300 group-hover:scale-110 group-hover:text-white"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="9" />
+      <path d="M15 15l6 6m-6-6v4.5m0-4.5h4.5" />
+    </svg>
+    <span>Explore components</span>
+    <svg
+      class="hover-btn-icon-trailing size-4 text-white/70 transition-all duration-300 group-hover:translate-x-1 group-hover:text-white"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M5 12h14M12 5l7 7-7 7" />
+    </svg>
+  </span>
+</button>`
       : isButton
       ? `<button
   type="button"
@@ -782,6 +900,56 @@ export function ComponentDetail({ id, item: propItem, onBack }: ComponentDetailP
               </svg>
             </button>
           </div>
+        ) : isHover ? (
+          <button
+            type="button"
+            className="group relative inline-flex items-center justify-center gap-2.5 overflow-hidden bg-[#171918] px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-black/25 transition-all duration-300 hover:border-white/30 hover:shadow-lg hover:shadow-black/35 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#625de8] dark:bg-[#111312]"
+            style={{
+              borderRadius: `${cornerRadius}px`,
+              border: "1px solid rgba(255, 255, 255, 0.15)",
+            }}
+          >
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0"
+              style={{
+                borderRadius: `${cornerRadius}px`,
+                background: accentColor,
+              }}
+            />
+            <span className="relative z-10 flex items-center gap-2.5">
+              <svg
+                className="size-4 text-(--lime) transition-transform duration-300 group-hover:scale-110 group-hover:text-white"
+                width={16}
+                height={16}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx={12} cy={12} r={9} />
+                <path d="M15 15l6 6m-6-6v4.5m0-4.5h4.5" />
+              </svg>
+              <span>Explore components</span>
+              <svg
+                className="size-4 text-white/70 transition-all duration-300 group-hover:translate-x-1 group-hover:text-white"
+                width={16}
+                height={16}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </span>
+          </button>
         ) : isButton ? (
           <button
             type="button"

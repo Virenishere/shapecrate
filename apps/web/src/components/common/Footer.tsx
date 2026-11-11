@@ -105,6 +105,14 @@ export default function Footer() {
                     Popover Button
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href="/components/hover-button"
+                    className="text-(--ink-2) transition-colors hover:text-(--ink)"
+                  >
+                    Hover Button
+                  </Link>
+                </li>
               </ul>
             </div>
 

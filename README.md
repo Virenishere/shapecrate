@@ -41,6 +41,7 @@ Preview and copy clean HTML and CSS directly on [shapecrate.vercel.app](https://
 | **Glow Button** | Buttons | HTML • CSS • Tailwind | [Preview & Playground](https://shapecrate.vercel.app/components/glow-button) |
 | **Shimmer Button** | Buttons | HTML • CSS • Tailwind | [Preview & Playground](https://shapecrate.vercel.app/components/shimmer-button) |
 | **Popover Button** | Buttons | HTML • CSS • Tailwind | [Preview & Playground](https://shapecrate.vercel.app/components/popover-button) |
+| **Hover Button** | Buttons | HTML • CSS • Tailwind | [Preview & Playground](https://shapecrate.vercel.app/components/hover-button) |
 
 ---
 
