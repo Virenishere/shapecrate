@@ -4,7 +4,7 @@ import { componentsRegistry } from "@shapecrate/components";
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://shapecrate.vercel.app";
 
 // Stable release / update date to ensure Googlebot respects lastModified
-const LAST_UPDATED = new Date("2026-11-10T00:00:00.000Z");
+const LAST_UPDATED = new Date("2026-11-18T00:00:00.000Z");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [

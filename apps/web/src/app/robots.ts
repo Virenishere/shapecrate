@@ -10,12 +10,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: [
           "/api/",
-          "/manifest.webmanifest",
           "/*?*",
-          "/opengraph-image*",
-          "/twitter-image*",
-          "/*/opengraph-image*",
-          "/*/twitter-image*",
         ],
       },
     ],
