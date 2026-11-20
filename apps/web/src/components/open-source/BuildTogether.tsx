@@ -1,7 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
-import ghicon from "../../../public/github.svg";
+import { GitHubIcon } from "@/components/common/GitHubIcon";
 
 export default function BuildTogether() {
   return (
@@ -39,14 +38,7 @@ export default function BuildTogether() {
               aria-label="View shapecrate repository on GitHub (opens in a new tab)"
               className="group inline-flex items-center gap-2.5 rounded-xl bg-(--ink) px-5 py-3 text-sm font-semibold text-(--surface) shadow-sm transition hover:opacity-90 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2"
             >
-              <Image
-                className="transition-colors brightness-0 invert dark:brightness-0 dark:invert-0"
-                src={ghicon}
-                alt=""
-                aria-hidden="true"
-                width={18}
-                height={18}
-              />
+              <GitHubIcon className="size-4.5 text-(--surface) transition-colors" />
               <span>View repository</span>
               <ExternalLink
                 className="size-4 text-(--surface)/75 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"

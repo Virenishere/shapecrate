@@ -1,7 +1,6 @@
 import { ArrowRight, ExternalLink } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
-import ghicon from "../../../public/github.svg";
+import { GitHubIcon } from "@/components/common/GitHubIcon";
 
 export default function OpenSourceSection() {
   return (
@@ -43,13 +42,9 @@ export default function OpenSourceSection() {
       <div className="flex w-full flex-col gap-4 lg:items-end">
         {/* card 1 */}
         <div className="flex w-full max-w-md items-center gap-3.5 rounded-2xl border border-[#303531] bg-[#2a2f2b] p-4 sm:p-5 shadow-sm transition-all hover:border-white/20 hover:bg-[#343b36]">
-          <Image
-            src={ghicon}
-            alt="GitHub logo"
-            width={24}
-            height={24}
-            className="shrink-0 brightness-0 invert"
-            aria-hidden="true"
+          <GitHubIcon
+            size={24}
+            className="size-6 shrink-0 text-white"
           />
           <div className="flex min-w-0 flex-1 flex-col">
             <span className="truncate text-sm font-medium text-white">

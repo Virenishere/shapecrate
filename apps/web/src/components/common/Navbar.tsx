@@ -1,12 +1,11 @@
 "use client";
 
 import { useSyncExternalStore, useState, useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Moon, Sun, Menu, X, Star } from "lucide-react";
 
-import icon from "../../../public/icon.svg";
-import ghicon from "../../../public/github.svg";
+import { Logo } from "@/components/common/Logo";
+import { GitHubIcon } from "@/components/common/GitHubIcon";
 import { useTheme } from "@/hooks/useTheme";
 
 const NAV_LINKS = [
@@ -74,14 +73,7 @@ export default function Navbar() {
           className="group flex items-center gap-2.5 shrink-0 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2"
           aria-label="shapecrate home"
         >
-          <Image
-            className="transition-transform group-hover:scale-105 dark:invert"
-            src={icon}
-            alt="shapecrate logomark"
-            width={24}
-            height={24}
-            priority
-          />
+          <Logo className="size-6 text-(--ink) transition-transform group-hover:scale-105" />
           <span className="font-bold text-base sm:text-lg tracking-tight text-(--ink)">
             shapecrate
           </span>
@@ -132,14 +124,7 @@ export default function Navbar() {
             aria-label="Star shapecrate on GitHub (opens in a new tab)"
             className="flex h-9 items-center justify-center gap-2 rounded-xl border border-(--line) bg-(--surface) px-2.5 sm:px-3 text-sm font-medium text-(--ink-2) shadow-2xs transition-colors hover:border-(--ink-3) hover:text-(--ink) focus-visible:outline-2 focus-visible:outline-offset-2"
           >
-            <Image
-              className="transition-colors dark:invert"
-              src={ghicon}
-              alt=""
-              aria-hidden="true"
-              width={18}
-              height={18}
-            />
+            <GitHubIcon className="size-4.5 text-(--ink-2) transition-colors group-hover:text-(--ink)" />
             <span className="hidden sm:inline">GitHub</span>
             <div className="flex items-center gap-1 border-l border-(--line) pl-2 text-xs font-semibold text-(--ink)">
               <Star

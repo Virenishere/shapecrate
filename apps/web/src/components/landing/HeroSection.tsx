@@ -1,9 +1,7 @@
 import { ArrowRight, Check } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { SimpleButtonPreview } from "@shapecrate/components";
-
-import ghicon from "../../../public/github.svg";
+import { GitHubIcon } from "@/components/common/GitHubIcon";
 
 export default function HeroSection() {
   return (
@@ -55,14 +53,7 @@ export default function HeroSection() {
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 rounded-xl border border-(--line) bg-(--surface) px-6 py-3.5 text-sm font-semibold text-(--ink) shadow-xs transition-all hover:bg-(--surface-2) active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2"
           >
-            <Image
-              className="transition-colors dark:invert"
-              src={ghicon}
-              alt=""
-              aria-hidden="true"
-              width={20}
-              height={20}
-            />
+            <GitHubIcon className="size-5 text-(--ink) transition-colors" />
             View on GitHub
           </Link>
         </div>

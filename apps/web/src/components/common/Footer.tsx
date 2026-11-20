@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import icon from "../../../public/icon.svg";
+import { Logo } from "@/components/common/Logo";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -19,13 +18,7 @@ export default function Footer() {
               href="/"
               aria-label="shapecrate home"
             >
-              <Image
-                className="transition-transform group-hover:scale-105 dark:invert"
-                src={icon}
-                alt="shapecrate logomark"
-                width={24}
-                height={24}
-              />
+              <Logo className="size-6 text-(--ink) transition-transform group-hover:scale-105" />
               <span className="font-bold text-lg tracking-tight text-(--ink)">
                 shapecrate
               </span>
