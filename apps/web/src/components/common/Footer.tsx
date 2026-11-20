@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import icon from "../../../public/vercel.svg";
+import icon from "../../../public/icon.svg";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -23,8 +23,8 @@ export default function Footer() {
                 className="transition-transform group-hover:scale-105 dark:invert"
                 src={icon}
                 alt="shapecrate logomark"
-                width={22}
-                height={22}
+                width={24}
+                height={24}
               />
               <span className="font-bold text-lg tracking-tight text-(--ink)">
                 shapecrate

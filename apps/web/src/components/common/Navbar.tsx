@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Moon, Sun, Menu, X, Star } from "lucide-react";
 
-import icon from "../../../public/vercel.svg";
+import icon from "../../../public/icon.svg";
 import ghicon from "../../../public/github.svg";
 import { useTheme } from "@/hooks/useTheme";
 
@@ -78,8 +78,8 @@ export default function Navbar() {
             className="transition-transform group-hover:scale-105 dark:invert"
             src={icon}
             alt="shapecrate logomark"
-            width={22}
-            height={22}
+            width={24}
+            height={24}
             priority
           />
           <span className="font-bold text-base sm:text-lg tracking-tight text-(--ink)">

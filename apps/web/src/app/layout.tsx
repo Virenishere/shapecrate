@@ -43,7 +43,7 @@ const siteWideJsonLd = {
       name: "Shapecrate",
       alternateName: ["Shape Crate", "Shapecrate UI"],
       url: siteUrl,
-      logo: `${siteUrl}/favicon.ico`,
+      logo: `${siteUrl}/icon.svg`,
       sameAs: ["https://github.com/Virenishere/shapecrate"],
     },
   ],
@@ -127,7 +127,12 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico" },
+    ],
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
   },
   verification: {
     google: "google118eab2a7749a346",
